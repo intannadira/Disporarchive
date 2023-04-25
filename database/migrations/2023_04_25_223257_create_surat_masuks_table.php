@@ -13,8 +13,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('surat_masuks', function (Blueprint $table) {
+        Schema::create('surat_masuk', function (Blueprint $table) {
             $table->id();
+            $table->string('no_urut');
+            $table->string('dari_instansi');
+            $table->string('no_surat');
+            $table->string('perihal');
+            $table->timestamp('tanggal_surat');
+            $table->timestamp('tanggal_terima');
+            $table->string('kepada');
+            $table->enum('kategori_surat', ['segera', 'sangat-segera', 'biasa']);
+            $table->string('isi_disposisi');
+            $table->enum('status', ['diterima','didisposisi','dilaksanakan','diverifikasi-kasubag','diverifikasi_sekdin','selesai']);
+            $table->string('lampiran');
+            $table->enum('tindakan', ['revisi','diajukan']);
+            $table->integer('jabatan_bidang_id');
+            $table->integer('karyawan_id');
+            $table->enum('tindakan_kadin', ['tindak-lanjut','selesaikan']);
+            $table->string('catatan_kadin');
+            $table->timestamp('tanggal_penyelesaian');
             $table->timestamps();
         });
     }
@@ -26,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat_masuks');
+        Schema::dropIfExists('surat_masuk');
     }
 };
