@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function jabatan()
     {
-        return $this->belongsTo('App\Models\Jabatan');
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function karyawan()

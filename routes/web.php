@@ -13,6 +13,10 @@ use App\Http\Controllers\Admin\RelasiController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\TipeGasController;
 use App\Http\Controllers\Admin\SearchBarcodeController;
+use App\Http\Controllers\SuperAdmin\HakAksesController;
+use App\Http\Controllers\SuperAdmin\KaryawanController;
+use App\Http\Controllers\SuperAdmin\JabatanBidangController;
+use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +94,13 @@ Route::group([
 
         Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
             
-            Route::resource('dashboard', DashboardController::class);
+            Route::resource('dashboard', HomeSuperAdminController::class);
+            //hakakses
+            Route::resource('hakakses', HakAksesController::class);
+            //jabatanbidang
+            Route::resource('jabatan', JabatanBidangController::class);
+            //karyawan
+            Route::resource('karyawan', KaryawanController::class);
         });
 
     });

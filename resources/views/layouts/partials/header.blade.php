@@ -5,13 +5,22 @@
                 <nav>
                     <ul id="nav_menu">
                         @if ( auth()->user()->jabatan_id == '1')
-                        <li><a href="{{ route('admin.dashboard.index')}}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
-                        <li><a href="{{ route('admin.sopir.index')}}"><i class="ti-user"></i> <span>Sopir</span></a></li>
-                        <li><a href="{{ route('admin.tipe-gas.index')}}"><i class="ti-pin-alt"></i> <span>Tipe Gas</span></a></li>
-                        <li><a href="{{ route('admin.gas.index')}}"><i class="ti-briefcase"></i> <span>Gas</span></a></li>
-                        <li><a href="{{ route('admin.relasi.index')}}"><i class="ti-truck"></i> <span>Relasi</span></a></li>
-                        <li><a href="{{ route('admin.laporan.index')}}"><i class="ti-receipt"></i> <span>Laporan</span></a></li>
-                        <li><a href="{{ route('admin.searchbarcode.index')}}"><i class="ti-receipt"></i> <span>Cari Barcode</span></a></li>
+                        <li>
+                            <li class="active"><a href="{{ route('superadmin.dashboard.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
+                            <li>
+                                <a href="javascript:void(0)"><i class="ti-dashboard"></i><span>Master Data</span></a>
+                                <ul class="submenu">
+                                    <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Hak Akses</span></a></li>
+                                    <li><a href="{{ route('superadmin.jabatan.index')}}"><i class="ti-user"></i> <span>Jabatan Bidang</span></a></li>
+                                    <li><a href="{{ route('superadmin.karyawan.index')}}"><i class="ti-pin-alt"></i> <span>Karyawan</span></a></li>
+                                </ul>
+                            </li>   
+                            <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Surat Keluar</span></a></li>
+                            <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
+                            <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
+                        </li>      
+            
+                        <li><a href="{{ route('admin.searchbarcode.index')}}"><i class="ti-receipt"></i> <span>Cari Barcode</span></a></li> --}}
                         @endif
                         @if ( auth()->user()->jabatan_id == '2')
                         <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>

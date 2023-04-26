@@ -12,7 +12,12 @@ class Karyawan extends Model
     protected $table = 'karyawan';
 
     protected $fillable = [
-        'nama_jabatan_bidang',
+        'nama',
         'jabatan_bidang_id'
     ];
+
+    public function jabatan_bidang()
+    {
+        return $this->belongsTo(JabatanBidang::class);
+    }
 }
