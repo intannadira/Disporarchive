@@ -16,6 +16,18 @@
                         @if ( auth()->user()->jabatan_id == '2')
                         <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
                         @endif
+                        @if ( auth()->user()->jabatan_id == '3')
+                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        @endif
+                        @if ( auth()->user()->jabatan_id == '4')
+                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        @endif
+                        @if ( auth()->user()->jabatan_id == '5')
+                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        @endif
+                        @if ( auth()->user()->jabatan_id == '6')
+                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>

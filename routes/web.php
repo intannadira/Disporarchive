@@ -37,9 +37,19 @@ Route::group([
     Route::get('authlogin', function () {
 
         if(auth()->user()->jabatan_id == '1'){
-            return redirect()->route('admin.dashboard.index');
-        }else{
-            return redirect()->route('supir.scan.index');
+            return redirect()->route('superadmin.dashboard.index');
+        }else if(auth()->user()->jabatan_id == '2'){
+            return redirect()->route('admin1.dashboard.index');
+        }else if(auth()->user()->jabatan_id == '3'){
+            return redirect()->route('admin2.dashboard.index');
+        }else if(auth()->user()->jabatan_id == '4'){
+            return redirect()->route('admin3.dashboard.index');
+        }else if(auth()->user()->jabatan_id == '5'){
+            return redirect()->route('user1.dashboard.index');
+        }else if(auth()->user()->jabatan_id == '6'){
+            return redirect()->route('user2.dashboard.index');
+        }else {
+            return redirect()->route('login');
         }
     });
 
@@ -69,6 +79,78 @@ Route::group([
             
             Route::resource('scan', ScanController::class);
             Route::resource('laporan', LaporanSupirController::class);
+        });
+
+    });
+
+    //role superadmin
+    Route::group([
+        'middleware' => 'role.superadmin'
+    ], function () {
+
+        Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
+        });
+
+    });
+
+    //role admin1
+    Route::group([
+        'middleware' => 'role.admin1'
+    ], function () {
+
+        Route::group(['prefix' => 'admin1', 'as' => 'admin1.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
+        });
+
+    });
+
+    //role admin2
+    Route::group([
+        'middleware' => 'role.admin2'
+    ], function () {
+
+        Route::group(['prefix' => 'admin2', 'as' => 'admin2.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
+        });
+
+    });
+
+    //role admin3
+    Route::group([
+        'middleware' => 'role.admin3'
+    ], function () {
+
+        Route::group(['prefix' => 'admin3', 'as' => 'admin3.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
+        });
+
+    });
+
+    //role user1
+    Route::group([
+        'middleware' => 'role.user1'
+    ], function () {
+
+        Route::group(['prefix' => 'user1', 'as' => 'user1.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
+        });
+
+    });
+
+    //role user2
+    Route::group([
+        'middleware' => 'role.user2'
+    ], function () {
+
+        Route::group(['prefix' => 'user2', 'as' => 'user2.'], function () {
+            
+            Route::resource('dashboard', DashboardController::class);
         });
 
     });
