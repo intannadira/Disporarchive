@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <h4 class="header-title">Daftar Pengguna</h4>
+                                <h4 class="header-title">Daftar Surat Masuk</h4>
                             </div>
                             <div class="col-md-6 col-12">
                                 <button type="button" onclick="add()"
@@ -42,10 +42,10 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Pengguna</th>
-                                    <th>Jabatan</th>
-                                    <th>Level</th>
-                                    <th>Tgl Daftar</th>
+                                    <th>No Agenda</th>
+                                    <th>Tanggal Diterima</th>
+                                    <th>Instansi</th>
+                                    <th>Perihal</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -60,6 +60,7 @@
         </div>
     </div>
 </div>
+@include('superadmin.suratmasuk.modal')
 
 <!-- main content area end -->
 @endsection
@@ -92,15 +93,15 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('superadmin.hakakses.index')}}',
+                  url: '{{ route('superadmin.suratmasuk.index')}}',
                   type: "GET",
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false},
-                {data: 'name', name: 'name'},
-                {data: 'jabatan.bagian', name: 'jabatan.bagian'},
-                {data: 'jabatan.nama_role', name: 'jabatan.nama_role'},
-                {data: 'tanggal', name: 'tanggal'},
+                {data: 'no_urut', name: 'no_urut'},
+                {data: 'tanggal_terima', name: 'tanggal_terima'},
+                {data: 'dari_instansi', name: 'dari_instansi'},
+                {data: 'perihal', name: 'perihal'},
                 {data: 'action', name: 'action'},
             ],
         });
@@ -119,7 +120,7 @@
       $('#nama').html("");
       $('#jabatan_bidang_id').html("");
       $('#modal-form').modal('show'); // show bootstrap modal
-      $('.modal-title').text('Tambah Data Jabatan'); // Set Title to Bootstrap modal title
+      $('.modal-title').text('Tambah Data Surat Masuk'); // Set Title to Bootstrap modal title
     }
 
     function filter_data(){
@@ -128,9 +129,17 @@
 
     function save(){
         $('#nama').html("");
-        $('#jabatan_bidang_id').html("");
+        $('#no_urut').html("");
+        $('#dari_instansi').html("");
+        $('#no_surat').html("");
+        $('#perihal').html("");
+        $('#tanggal_terima').html("");
+        $('#tanggal_surat').html("");
+        $('#kepada').html("");
+        $('#kategori_surat').html("");
+        $('#status').html("");
         $.ajax({
-            url : "{{ route('superadmin.karyawan.store')}}",
+            url : "{{ route('superadmin.suratmasuk.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -140,11 +149,29 @@
                     reload_table();
                     sukses();
                 }else{
-                    if(data.errors.nama){
-                        $('#nama').text(data.errors.nama[0]);
+                    if(data.errors.no_urut){
+                        $('#no_urut').text(data.errors.no_urut[0]);
                     }
-                    if(data.errors.jabatan_bidang_id){
-                        $('#jabatan_bidang_id').text(data.errors.jabatan_bidang_id[0]);
+                    if(data.errors.dari_instansi){
+                        $('#dari_instansi').text(data.errors.dari_instansi[0]);
+                    }
+                    if(data.errors.no_surat){
+                        $('#no_surat').text(data.errors.no_surat[0]);
+                    }
+                    if(data.errors.perihal){
+                        $('#perihal').text(data.errors.perihal[0]);
+                    }
+                    if(data.errors.tanggal_terima){
+                        $('#tanggal_terima').text(data.errors.tanggal_terima[0]);
+                    }
+                    if(data.errors.tanggal_surat){
+                        $('#tanggal_surat').text(data.errors.tanggal_surat[0]);
+                    }
+                    if(data.errors.kepada){
+                        $('#kepada').text(data.errors.kepada[0]);
+                    }
+                    if(data.errors.kategori_surat){
+                        $('#kategori_surat').text(data.errors.kategori_surat[0]);
                     }
                 }
             },
@@ -173,19 +200,31 @@
 
     function edit(id){
         $('#form')[0].reset(); // reset form on modals
-        $('#nama').html("");
-        $('#jabatan_bidang_id').html("");
+        $('#no_urut').html("");
+        $('#dari_instansi').html("");
+        $('#no_surat').html("");
+        $('#perihal').html("");
+        $('#tanggal_terima').html("");
+        $('#tanggal_surat').html("");
+        $('#kepada').html("");
+        $('#kategori_surat').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/karyawan/" + id,
+            url : "/superadmin/suratmasuk/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
                 $('[name="id"]').val(data.id);
-                $('[name="nama"]').val(data.nama);
-                $('[name="jabatan_bidang_id"]').val(data.jabatan_bidang_id);
+                $('[name="no_urut"]').val(data.no_urut);
+                $('[name="dari_instansi"]').val(data.dari_instansi);
+                $('[name="no_surat"]').val(data.no_surat);
+                $('[name="perihal"]').val(data.perihal);
+                $('[name="tanggal_terima"]').val(data.tanggal_terima);
+                $('[name="tanggal_surat"]').val(data.tanggal_surat);
+                $('[name="kepada"]').val(data.kepada);
+                $('[name="kategori_surat"]').val(data.kategori_surat);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit Data Karyawan'); // Set title to Bootstrap modal title   
+                $('.modal-title').text('Edit Data Surat Masuk'); // Set title to Bootstrap modal title   
             },
             error: function (jqXHR, textStatus , errorThrown) {
                 alert(errorThrown);
@@ -211,7 +250,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/karyawan/" + id,
+            url : "/superadmin/suratmasuk/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

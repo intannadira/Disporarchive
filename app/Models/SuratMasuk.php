@@ -30,4 +30,15 @@ class SuratMasuk extends Model
             'catatan_kadin',
             'tanggal_penyelesaian',
     ];
+
+    public function jabatan_bidang()
+    {
+        return $this->belongsTo(JabatanBidang::class, 'jabatan_bidang_id');
+    }
+
+    public function karyawan()
+    {
+        return $this->belongsTo(Karyawan::class, 'karyawan_id');
+    }
+    
 }

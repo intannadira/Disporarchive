@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\TipeGasController;
 use App\Http\Controllers\Admin\SearchBarcodeController;
 use App\Http\Controllers\SuperAdmin\HakAksesController;
 use App\Http\Controllers\SuperAdmin\KaryawanController;
+use App\Http\Controllers\SuperAdmin\SuratMasukController;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
@@ -101,6 +102,10 @@ Route::group([
             Route::resource('jabatan', JabatanBidangController::class);
             //karyawan
             Route::resource('karyawan', KaryawanController::class);
+            //suratmasuk
+            Route::resource('suratmasuk', SuratMasukController::class);
+            Route::get('surat-masuk/detail', [SuratMasukController::class, 'detail_surat'])->name('suratmasuk.detail');
+
         });
 
     });

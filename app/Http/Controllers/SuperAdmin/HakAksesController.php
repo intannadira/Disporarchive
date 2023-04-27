@@ -41,7 +41,7 @@ class HakAksesController extends Controller
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
         return view('superadmin.hakakses.index', [
-            'title'     => 'Hak Akses Role',
+            'title'     => 'Pengguna',
             'jabatan'   => $jabatan
         ]);
     }
