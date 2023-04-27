@@ -42,10 +42,10 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th>Nama Pengguna</th>
                                     <th>Jabatan</th>
                                     <th>Level</th>
-                                    <th>Username</th>
+                                    <th>Tgl Daftar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -100,7 +100,7 @@
                 {data: 'name', name: 'name'},
                 {data: 'jabatan.bagian', name: 'jabatan.bagian'},
                 {data: 'jabatan.nama_role', name: 'jabatan.nama_role'},
-                {data: 'name', name: 'name'},
+                {data: 'tanggal', name: 'tanggal'},
                 {data: 'action', name: 'action'},
             ],
         });

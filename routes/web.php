@@ -41,7 +41,7 @@ Route::group([
     Route::get('authlogin', function () {
 
         if(auth()->user()->jabatan_id == '1'){
-            return redirect()->route('superadmin.dashboard.index');
+            return redirect()->route('superadmin.home.index');
         }else if(auth()->user()->jabatan_id == '2'){
             return redirect()->route('admin1.dashboard.index');
         }else if(auth()->user()->jabatan_id == '3'){
@@ -94,7 +94,7 @@ Route::group([
 
         Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
             
-            Route::resource('dashboard', HomeSuperAdminController::class);
+            Route::resource('home', HomeSuperAdminController::class);
             //hakakses
             Route::resource('hakakses', HakAksesController::class);
             //jabatanbidang

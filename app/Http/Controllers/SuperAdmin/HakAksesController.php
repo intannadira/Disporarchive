@@ -21,6 +21,11 @@ class HakAksesController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('tanggal', function ($row) {
+                    $tanggal = date('d-m-Y H:i:s'
+                    , strtotime($row->created_at));
+                    return $tanggal;
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
@@ -29,7 +34,7 @@ class HakAksesController extends Controller
                             </center>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'tanggal'])
                 ->make(true);
         }
 
