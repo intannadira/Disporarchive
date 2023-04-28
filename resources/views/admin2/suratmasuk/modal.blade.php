@@ -72,7 +72,6 @@
                             </span>
                         </div>
                         <div class="col-md-3 col-12 mb-3">
-                           
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Tindakan</label>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin1;
+namespace App\Http\Controllers\Admin2;
 
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class SuratMasukAdmin1Controller extends Controller
+class SuratMasukAdmin2Controller extends Controller
 {
     public function index()
     {
         //datatable
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
-            ->where('status','diterima')
+            ->where('status','diverifikasi-kasubag')
             ->get();
 
             return Datatables::of($data)
@@ -59,7 +59,7 @@ class SuratMasukAdmin1Controller extends Controller
 
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
-        return view('admin1.suratmasuk.index', [
+        return view('admin2.suratmasuk.index', [
             'title'     => 'Surat Masuk',
             'jabatan'   => $jabatan
         ]);
@@ -70,7 +70,7 @@ class SuratMasukAdmin1Controller extends Controller
         $kode = $request->get('kode');
         $surat = SuratMasuk::where('id', $kode)->first();
 
-        return view('admin1.suratmasuk.detail', [
+        return view('admin2.suratmasuk.detail', [
             'title' => 'Detail Surat Masuk',
             'surat' => $surat
         ]);
@@ -103,15 +103,13 @@ class SuratMasukAdmin1Controller extends Controller
             if ($request->tindakan == 'diajukan') {
                 SuratMasuk::find($request->id)->update(
                     [
-                        'tindakan'                    => $request->tindakan,
-                        'status'                      => 'diverifikasi-kasubag',
+                        'status'                      => 'diverifikasi-sekdin',
                     ]
                 );
             }else{
                 SuratMasuk::find($request->id)->update(
                     [
-                        'tindakan'                    => $request->tindakan,
-                        'status'                      => 'ditolak',
+                        'status'                      => 'diverifikasi-kasubag',
                     ]
                 );
             }

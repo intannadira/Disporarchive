@@ -29,7 +29,7 @@
                             <div class="col-md-6 col-12">
                                 <h4 class="header-title">Daftar Surat Masuk</h4>
                             </div>
-                            <div class="col-md-6 col-12">                        
+                            <div class="col-md-6 col-12">                          
                                 <button type="hidden" onclick="reload_table()"
                                 class="btn btn-rounded btn-outline-secondary float-right mb-3 mr-1"><i
                                     class="ti-reload"> </i> Reload</button>
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-@include('admin1.suratmasuk.modal')
+@include('admin2.suratmasuk.modal')
 
 <!-- main content area end -->
 @endsection
@@ -91,7 +91,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('admin1.suratmasukadmin1.index')}}',
+                  url: '{{ route('admin2.suratmasukadmin2.index')}}',
                   type: "GET",
             },
             columns: [
@@ -129,7 +129,7 @@
     function save(){
         $('#tindakan').html("");
         $.ajax({
-            url : "{{ route('admin1.suratmasukadmin1.store')}}",
+            url : "{{ route('admin2.suratmasukadmin2.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -180,7 +180,7 @@
         $('#tindakan').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/admin2/suratmasukadmin2/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -195,7 +195,7 @@
                 $('[name="kategori_surat"]').val(data.kategori_surat);
                 $('[name="tindakan"]').val(data.tindakan);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit Data Surat Masuk'); // Set title to Bootstrap modal title   
+                $('.modal-title').text('Verifikasi Data Surat Masuk'); // Set title to Bootstrap modal title   
             },
             error: function (jqXHR, textStatus , errorThrown) {
                 alert(errorThrown);
@@ -221,7 +221,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/admin2/suratmasukadmin2/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){
