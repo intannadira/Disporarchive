@@ -12,10 +12,12 @@ use App\Http\Controllers\Admin\RelasiController;
 
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\TipeGasController;
+use App\Http\Controllers\Admin1\HomeAdmin1Controller;
 use App\Http\Controllers\Admin\SearchBarcodeController;
 use App\Http\Controllers\SuperAdmin\HakAksesController;
 use App\Http\Controllers\SuperAdmin\KaryawanController;
 use App\Http\Controllers\SuperAdmin\SuratMasukController;
+use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
@@ -44,7 +46,7 @@ Route::group([
         if(auth()->user()->jabatan_id == '1'){
             return redirect()->route('superadmin.home.index');
         }else if(auth()->user()->jabatan_id == '2'){
-            return redirect()->route('admin1.dashboard.index');
+            return redirect()->route('admin1.home.index');
         }else if(auth()->user()->jabatan_id == '3'){
             return redirect()->route('admin2.dashboard.index');
         }else if(auth()->user()->jabatan_id == '4'){
@@ -117,7 +119,10 @@ Route::group([
 
         Route::group(['prefix' => 'admin1', 'as' => 'admin1.'], function () {
             
-            Route::resource('dashboard', DashboardController::class);
+            Route::resource('home', HomeAdmin1Controller::class);
+            //Surat Masuk
+            Route::resource('suratmasukadmin1', SuratMasukAdmin1Controller::class);
+           
         });
 
     });
@@ -169,6 +174,7 @@ Route::group([
         });
 
     });
+
 });
 
 Route::middleware([

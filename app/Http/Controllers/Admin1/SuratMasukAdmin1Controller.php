@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\Admin1;
 
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
@@ -10,20 +10,22 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class SuratMasukController extends Controller
+class SuratMasukAdmin1Controller extends Controller
 {
     public function index()
     {
         //datatable
         if (request()->ajax()) {
-            $data = SuratMasuk::with('jabatan_bidang')->get();
+            $data = SuratMasuk::with('jabatan_bidang')
+            ->where('status','diverifikasi-kasubag')
+            ->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 //status
                 ->addColumn('h_status', function ($data) {
                     if ($data->status == 'diterima') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-danger">Menunggu</a>';
+                        $status     = '<a href="javascript:void(0)" class="badge badge-danger">Diterima</a>';
                     }
                     if ($data->status == 'didisposisi') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-warning">Disposisi</a>';
@@ -32,7 +34,7 @@ class SuratMasukController extends Controller
                         $status     = '<a href="javascript:void(0)" class="badge badge-primary">Dilaksanakan</a>';
                     }
                     if ($data->status == 'diverifikasi-kasubag') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-warning">Diverfikasi Kasub</a>';
+                        $status     = '<a href="javascript:void(0)" class="badge badge-warning">Diverfikasi Kasubag</a>';
                     }
                     if ($data->status == 'diverifikasi-sekdin') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-secondary">Diverifikasi Sekdin</a>';
@@ -57,7 +59,7 @@ class SuratMasukController extends Controller
 
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
-        return view('superadmin.suratmasuk.index', [
+        return view('admin1.suratmasuk.index', [
             'title'     => 'Surat Masuk',
             'jabatan'   => $jabatan
         ]);
@@ -68,7 +70,7 @@ class SuratMasukController extends Controller
         $kode = $request->get('kode');
         $surat = SuratMasuk::where('id', $kode)->first();
 
-        return view('superadmin.suratmasuk.detail', [
+        return view('admin1.suratmasuk.detail', [
             'title' => 'Detail Surat Masuk',
             'surat' => $surat
         ]);
@@ -129,7 +131,7 @@ class SuratMasukController extends Controller
                     'tanggal_terima'              => $request->tanggal_terima,
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
-                    'status'                      => 'diverifikasi-kasubag',
+                    'status'                      => 'diterima',
                     'lampiran'                    => $request->lampiran,
                 ]
             );

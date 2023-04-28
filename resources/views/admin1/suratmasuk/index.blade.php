@@ -61,7 +61,7 @@
         </div>
     </div>
 </div>
-@include('superadmin.suratmasuk.modal')
+@include('admin1.suratmasuk.modal')
 
 <!-- main content area end -->
 @endsection
@@ -94,7 +94,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('superadmin.suratmasuk.index')}}',
+                  url: '{{ route('admin1.suratmasukadmin1.index')}}',
                   type: "GET",
             },
             columns: [
@@ -141,7 +141,7 @@
         $('#kategori_surat').html("");
         $('#status').html("");
         $.ajax({
-            url : "{{ route('superadmin.suratmasuk.store')}}",
+            url : "{{ route('admin1.suratmasukadmin1.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -212,7 +212,7 @@
         $('#kategori_surat').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/suratmasuk/" + id,
+            url : "/admin1/suratmasuk/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -252,7 +252,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/suratmasuk/" + id,
+            url : "/admin1/suratmasuk/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){
