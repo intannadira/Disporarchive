@@ -14,12 +14,14 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\TipeGasController;
 use App\Http\Controllers\Admin1\HomeAdmin1Controller;
 use App\Http\Controllers\Admin2\HomeAdmin2Controller;
+use App\Http\Controllers\Admin3\HomeAdmin3Controller;
 use App\Http\Controllers\Admin\SearchBarcodeController;
 use App\Http\Controllers\SuperAdmin\HakAksesController;
 use App\Http\Controllers\SuperAdmin\KaryawanController;
 use App\Http\Controllers\SuperAdmin\SuratMasukController;
 use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
 use App\Http\Controllers\Admin2\SuratMasukAdmin2Controller;
+use App\Http\Controllers\Admin3\SuratMasukAdmin3Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
@@ -52,7 +54,7 @@ Route::group([
         }else if(auth()->user()->jabatan_id == '3'){
             return redirect()->route('admin2.home.index');
         }else if(auth()->user()->jabatan_id == '4'){
-            return redirect()->route('admin3.dashboard.index');
+            return redirect()->route('admin3.home.index');
         }else if(auth()->user()->jabatan_id == '5'){
             return redirect()->route('user1.dashboard.index');
         }else if(auth()->user()->jabatan_id == '6'){
@@ -150,7 +152,9 @@ Route::group([
 
         Route::group(['prefix' => 'admin3', 'as' => 'admin3.'], function () {
             
-            Route::resource('dashboard', DashboardController::class);
+            Route::resource('home', HomeAdmin3Controller::class);
+            //Surat Masuk
+            Route::resource('suratmasukadmin3', SuratMasukAdmin3Controller::class);
         });
 
     });
