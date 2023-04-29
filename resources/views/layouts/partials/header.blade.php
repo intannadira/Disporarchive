@@ -24,23 +24,25 @@
                         @if ( auth()->user()->jabatan_id == '2')
                             <li class="active"><a href="{{ route('admin1.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                             <li><a href="{{ route('admin1.suratmasukadmin1.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
-                            <li><a href="{{ route('admin1.suratmasukadmin1.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
+                            <li><a href="{{ route('admin1.historisuratadmin1.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '3')
                         <li class="active"><a href="{{ route('admin2.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('admin2.suratmasukadmin2.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
-                        <li><a href="{{ route('admin2.suratmasukadmin2.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
+                        <li><a href="{{ route('admin2.historisuratadmin2.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '4')
                         <li class="active"><a href="{{ route('admin3.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('admin3.suratmasukadmin3.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
-                        <li><a href="{{ route('admin3.suratmasukadmin3.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
+                        <li><a href="{{ route('admin3.historisuratadmin3.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '5')
-                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        <li class="active"><a href="{{ route('user1.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
+                        <li><a href="{{ route('user1.historisuratuser1.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '6')
-                        <li><a href="{{ route('supir.scan.index')}}"><i class="ti-search"></i> <span>Scan Barcode</span></a></li>
+                        <li class="active"><a href="{{ route('user2.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
+                        <li><a href="{{ route('user2.suratmasukuser2.index')}}"><i class="ti-user"></i> <span>Surat Masuk</span></a></li>
                         @endif
                     </ul>
                 </nav>

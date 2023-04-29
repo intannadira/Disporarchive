@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <h4 class="header-title">Daftar Surat Masuk</h4>
+                                <h4 class="header-title">Daftar Histori Surat</h4>
                             </div>
                             <div class="col-md-6 col-12">                        
                                 <button type="hidden" onclick="reload_table()"
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-@include('admin3.suratmasuk.modal')
+@include('user1.historisurat.modal')
 
 <!-- main content area end -->
 @endsection
@@ -91,7 +91,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('admin3.suratmasukadmin3.index')}}',
+                  url: '{{ route('user1.historisuratuser1.index')}}',
                   type: "GET",
             },
             columns: [
@@ -133,7 +133,7 @@
         $('#tindakan_kadin').html("");
         $('#catatan_kadin').html("");
         $.ajax({
-            url : "{{ route('admin3.suratmasukadmin3.store')}}",
+            url : "{{ route('user1.historisuratuser1.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -197,9 +197,14 @@
         $('#kepada').html("");
         $('#kategori_surat').html("");
         $('#tindakan').html("");
+        $('#jabatan_bidang_id').html("");
+        $('#karyawan_id').html("");
+        $('#isi_disposisi').html("");
+        $('#tindakan_kadin').html("");
+        $('#catatan_kadin').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/admin3/suratmasukadmin3/" + id,
+            url : "/user1/historisuratuser1/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -213,6 +218,11 @@
                 $('[name="kepada"]').val(data.kepada);
                 $('[name="kategori_surat"]').val(data.kategori_surat);
                 $('[name="tindakan"]').val(data.tindakan);
+                $('[name="jabatan_bidang_id"]').val(data.jabatan_bidang_id);
+                $('[name="karyawan_id"]').val(data.karyawan_id);
+                $('[name="isi_disposisi"]').val(data.isi_disposisi);
+                $('[name="tindakan_kadin"]').val(data.tindakan_kadin);
+                $('[name="catatan_kadin"]').val(data.catatan_kadin);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Edit Data Surat Masuk'); // Set title to Bootstrap modal title   
             },
@@ -240,7 +250,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/admin3/suratmasukadmin3/" + id,
+            url : "/user1/historisuratuser1/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

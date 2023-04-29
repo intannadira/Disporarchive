@@ -45,6 +45,10 @@ class SuratMasukAdmin3Controller extends Controller
                     }
                     return $status;
                 })
+                ->addColumn('h_tanggal_terima', function ($data) {
+                    $tanggal_terima = date('d-m-Y', strtotime($data->tanggal_terima));
+                    return $tanggal_terima;
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
@@ -54,7 +58,7 @@ class SuratMasukAdmin3Controller extends Controller
                             </center>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'h_status'])
+                ->rawColumns(['action', 'h_status', 'h_tanggal_terima'])
                 ->make(true);
         }
 
@@ -114,6 +118,7 @@ class SuratMasukAdmin3Controller extends Controller
                         'karyawan_id'                 => $request->karyawan_id,
                         'tindakan_kadin'              => $request->tindakan_kadin,
                         'catatan_kadin'               => $request->catatan_kadin,
+                        'tanggal_penyelesaian'        => date('Y-m-d H:i:s'),
                     ]
                 );
 

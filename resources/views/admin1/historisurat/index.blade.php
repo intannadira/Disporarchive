@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <h4 class="header-title">Daftar Surat Masuk</h4>
+                                <h4 class="header-title">Daftar Histori Surat</h4>
                             </div>
                             <div class="col-md-6 col-12">                        
                                 <button type="hidden" onclick="reload_table()"
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-@include('admin3.suratmasuk.modal')
+@include('admin2.suratmasuk.modal')
 
 <!-- main content area end -->
 @endsection
@@ -91,7 +91,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('admin3.suratmasukadmin3.index')}}',
+                  url: '{{ route('admin1.historisuratadmin1.index')}}',
                   type: "GET",
             },
             columns: [
@@ -133,7 +133,7 @@
         $('#tindakan_kadin').html("");
         $('#catatan_kadin').html("");
         $.ajax({
-            url : "{{ route('admin3.suratmasukadmin3.store')}}",
+            url : "{{ route('admin1.suratmasukadmin1.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -199,7 +199,7 @@
         $('#tindakan').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/admin3/suratmasukadmin3/" + id,
+            url : "/admin1/suratmasukadmin1/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -240,7 +240,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/admin3/suratmasukadmin3/" + id,
+            url : "/admin1/suratmasukadmin1/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

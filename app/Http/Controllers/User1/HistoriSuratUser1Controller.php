@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin2;
+namespace App\Http\Controllers\User1;
 
 use App\Models\Karyawan;
 use App\Models\SuratMasuk;
@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class HistoriSuratAdmin2Controller extends Controller
+class HistoriSuratUser1Controller extends Controller
 {
     public function index()
     {
         //datatable
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
-            // ->where('status','didisposisi')
             ->get();
 
             return Datatables::of($data)
@@ -52,7 +51,8 @@ class HistoriSuratAdmin2Controller extends Controller
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
-                            <a href="histori-suratadmin2/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
+                            <a href="histori-suratuser1/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit(' . $row->id . ')"><i class="ti-pencil-alt"></i></a>
                             </center>';
                     return $actionBtn;
                 })
@@ -63,8 +63,8 @@ class HistoriSuratAdmin2Controller extends Controller
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
         $karyawan = Karyawan::select('id', 'nama')->get();
 
-        return view('admin2.historisurat.index', [
-            'title'     => 'Histori Surat',
+        return view('user1.historisurat.index', [
+            'title'     => 'Surat Masuk',
             'jabatan'   => $jabatan,
             'karyawan'  => $karyawan
         ]);
@@ -73,10 +73,10 @@ class HistoriSuratAdmin2Controller extends Controller
     function detail_surat(Request $request)
     {
         $kode = $request->get('kode');
-        $surat = SuratMasuk::with(['jabatan_bidang', 'karyawan'])->where('id', $kode)->first();
+        $surat = SuratMasuk::where('id', $kode)->first();
 
-        return view('admin2.historisurat.detail', [
-            'title' => 'Detail Histori Surat',
+        return view('user1.historisurat.detail', [
+            'title' => 'Detail Surat Masuk',
             'surat' => $surat
         ]);
     }
@@ -110,12 +110,7 @@ class HistoriSuratAdmin2Controller extends Controller
 
                 SuratMasuk::find($request->id)->update(
                     [
-                        'status'                      => 'didisposisi',
-                        'isi_disposisi'               => $request->isi_disposisi,
-                        'jabatan_bidang_id'           => $request->jabatan_bidang_id,
-                        'karyawan_id'                 => $request->karyawan_id,
-                        'tindakan_kadin'              => $request->tindakan_kadin,
-                        'catatan_kadin'               => $request->catatan_kadin,
+                        'status'                      => $request->status,
                     ]
                 );
 

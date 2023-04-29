@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <h4 class="header-title">Daftar Surat Masuk</h4>
+                                <h4 class="header-title">Daftar Histori Surat</h4>
                             </div>
                             <div class="col-md-6 col-12">                        
                                 <button type="hidden" onclick="reload_table()"
@@ -91,7 +91,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('admin3.suratmasukadmin3.index')}}',
+                  url: '{{ route('admin3.historisuratadmin3.index')}}',
                   type: "GET",
             },
             columns: [
