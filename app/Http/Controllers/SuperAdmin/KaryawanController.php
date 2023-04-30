@@ -35,7 +35,7 @@ class KaryawanController extends Controller
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
         return view('superadmin.karyawan.index', [
-            'title'     => 'Karyawan',
+            'title'     => 'Staff',
             'jabatan'   => $jabatan
         ]);
     }

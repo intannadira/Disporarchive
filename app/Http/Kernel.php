@@ -71,5 +71,15 @@ class Kernel extends HttpKernel
         'role.admin3' => \App\Http\Middleware\RoleAdmin3::class,
         'role.user1'  => \App\Http\Middleware\RoleUser1::class,
         'role.user2'  => \App\Http\Middleware\RoleUser2::class,
+        'role.user3'  => \App\Http\Middleware\RoleUser3::class,
+        'role.user4'  => \App\Http\Middleware\RoleUser4::class,
+        'role.user5'  => \App\Http\Middleware\RoleUser5::class,
+        'role.user6'  => \App\Http\Middleware\RoleUser6::class,
+        'role.user7'  => \App\Http\Middleware\RoleUser7::class,
+        'role.user8'  => \App\Http\Middleware\RoleUser8::class,
+        'role.user9'  => \App\Http\Middleware\RoleUser9::class,
+        'role.user10' => \App\Http\Middleware\RoleUser10::class,
+        'role.user11' => \App\Http\Middleware\RoleUser11::class,
+        'role.user12' => \App\Http\Middleware\RoleUser12::class,
     ];
 }
