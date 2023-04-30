@@ -33,6 +33,8 @@ use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
 use App\Http\Controllers\Admin2\HistoriSuratAdmin2Controller;
 use App\Http\Controllers\Admin3\HistoriSuratAdmin3Controller;
 use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
+use App\Http\Controllers\Admin1\DisposisiSayaAdmin1Controller;
+use App\Http\Controllers\Admin2\DisposisiSayaAdmin2Controller;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
 /*
 |--------------------------------------------------------------------------
@@ -144,7 +146,10 @@ Route::group([
             //HistoriSuratMasukAdmin3
             Route::resource('historisuratadmin1', HistoriSuratAdmin1Controller::class);
             Route::get('histori-suratadmin1/detail', [HistoriSuratAdmin1Controller::class, 'detail_surat'])->name('historisuratadmin1.detail');
-           
+            //DisposisiSayaadmin1
+            Route::resource('disposisisayaadmin1', DisposisiSayaAdmin1Controller::class);
+            Route::get('disposisi-sayaadmin1/detail', [DisposisiSayaAdmin1Controller::class, 'detail_surat'])->name('disposisisayaadmin1.detail');
+
         });
 
     });
@@ -162,6 +167,9 @@ Route::group([
             //HistoriSuratMasukAdmin3
             Route::resource('historisuratadmin2', HistoriSuratAdmin2Controller::class);
             Route::get('histori-suratadmin2/detail', [HistoriSuratAdmin2Controller::class, 'detail_surat'])->name('historisuratadmin2.detail');
+            //DisposisiSayaadmin2
+            Route::resource('disposisisayaadmin2', DisposisiSayaAdmin2Controller::class);
+            Route::get('disposisi-sayaadmin2/detail', [DisposisiSayaAdmin2Controller::class, 'detail_surat'])->name('disposisisayaadmin2.detail');
         });
 
     });

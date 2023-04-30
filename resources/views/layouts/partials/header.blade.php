@@ -12,7 +12,7 @@
                                 <ul class="submenu">
                                     <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Pengguna</span></a></li>
                                     <li><a href="{{ route('superadmin.jabatan.index')}}"><i class="ti-user"></i> <span>Jabatan</span></a></li>
-                                    <li><a href="{{ route('superadmin.karyawan.index')}}"><i class="ti-user"></i> <span>Karyawan</span></a></li>
+                                    <li><a href="{{ route('superadmin.karyawan.index')}}"><i class="ti-user"></i> <span>Staff</span></a></li>
                                 </ul>
                             </li>   
                             <li><a href="{{ route('superadmin.suratmasuk.index')}}"><i class="ti-share"></i> <span>Surat Masuk</span></a></li>
@@ -25,11 +25,13 @@
                             <li class="active"><a href="{{ route('admin1.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                             <li><a href="{{ route('admin1.suratmasukadmin1.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
                             <li><a href="{{ route('admin1.historisuratadmin1.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
+                            <li><a href="{{ route('admin1.disposisisayaadmin1.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '3')
                         <li class="active"><a href="{{ route('admin2.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('admin2.suratmasukadmin2.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
                         <li><a href="{{ route('admin2.historisuratadmin2.index')}}"><i class="ti-archive"></i> <span>Histori Surat</span></a></li>
+                        <li><a href="{{ route('admin2.disposisisayaadmin2.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '4')
                         <li class="active"><a href="{{ route('admin3.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
