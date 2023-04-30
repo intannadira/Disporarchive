@@ -22,9 +22,11 @@ use App\Http\Controllers\SuperAdmin\HakAksesController;
 use App\Http\Controllers\SuperAdmin\KaryawanController;
 use App\Http\Controllers\SuperAdmin\SuratMasukController;
 use App\Http\Controllers\User2\SuratMasukUser2Controller;
+use App\Http\Controllers\SuperAdmin\SuratKeluarController;
 use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
 use App\Http\Controllers\Admin2\SuratMasukAdmin2Controller;
 use App\Http\Controllers\Admin3\SuratMasukAdmin3Controller;
+use App\Http\Controllers\SuperAdmin\HistoriSuratController;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
@@ -45,7 +47,7 @@ use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
-    return redirect()->route('admin.dashboard.index');
+    return redirect()->route('superadmin.home.index');
 });
 
 Route::group([
@@ -117,7 +119,13 @@ Route::group([
             Route::resource('karyawan', KaryawanController::class);
             //suratmasuk
             Route::resource('suratmasuk', SuratMasukController::class);
+            //suratkeluar
+            Route::resource('suratkeluar', SuratKeluarController::class);
             Route::get('surat-masuk/detail', [SuratMasukController::class, 'detail_surat'])->name('suratmasuk.detail');
+            //Histori Surat
+            Route::resource('historisurat', HistoriSuratController::class);
+            Route::get('histori-surat/detail', [HistoriSuratController::class, 'detail_surat'])->name('historisurat.detail');
+           
 
         });
 
