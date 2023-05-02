@@ -91,7 +91,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('user3.suratmasukuser3.index')}}',
+                  url: '{{ route('user10.suratmasukuser10.index')}}',
                   type: "GET",
             },
             columns: [

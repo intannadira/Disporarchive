@@ -15,20 +15,38 @@ use App\Http\Controllers\Admin\TipeGasController;
 use App\Http\Controllers\User1\HomeUser1Controller;
 use App\Http\Controllers\User2\HomeUser2Controller;
 use App\Http\Controllers\User3\HomeUser3Controller;
+use App\Http\Controllers\User4\HomeUser4Controller;
+use App\Http\Controllers\User5\HomeUser5Controller;
+use App\Http\Controllers\User6\HomeUser6Controller;
+use App\Http\Controllers\User7\HomeUser7Controller;
+use App\Http\Controllers\User8\HomeUser8Controller;
+use App\Http\Controllers\User9\HomeUser9Controller;
 use App\Http\Controllers\Admin1\HomeAdmin1Controller;
 use App\Http\Controllers\Admin2\HomeAdmin2Controller;
 use App\Http\Controllers\Admin3\HomeAdmin3Controller;
+use App\Http\Controllers\User10\HomeUser10Controller;
+use App\Http\Controllers\User11\HomeUser11Controller;
+use App\Http\Controllers\User12\HomeUser12Controller;
 use App\Http\Controllers\Admin\SearchBarcodeController;
 use App\Http\Controllers\SuperAdmin\HakAksesController;
 use App\Http\Controllers\SuperAdmin\KaryawanController;
 use App\Http\Controllers\SuperAdmin\SuratMasukController;
 use App\Http\Controllers\User2\SuratMasukUser2Controller;
 use App\Http\Controllers\User3\SuratMasukUser3Controller;
+use App\Http\Controllers\User4\SuratMasukUser4Controller;
+use App\Http\Controllers\User5\SuratMasukUser5Controller;
+use App\Http\Controllers\User6\SuratMasukUser6Controller;
+use App\Http\Controllers\User7\SuratMasukUser7Controller;
+use App\Http\Controllers\User8\SuratMasukUser8Controller;
+use App\Http\Controllers\User9\SuratMasukUser9Controller;
 use App\Http\Controllers\SuperAdmin\SuratKeluarController;
 use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
 use App\Http\Controllers\Admin2\SuratMasukAdmin2Controller;
 use App\Http\Controllers\Admin3\SuratMasukAdmin3Controller;
 use App\Http\Controllers\SuperAdmin\HistoriSuratController;
+use App\Http\Controllers\User10\SuratMasukUser10Controller;
+use App\Http\Controllers\User11\SuratMasukUser11Controller;
+use App\Http\Controllers\User12\SuratMasukUser12Controller;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
@@ -75,23 +93,23 @@ Route::group([
         }else if(auth()->user()->jabatan_id == '7'){
             return redirect()->route('user3.home.index');
         }else if(auth()->user()->jabatan_id == '8'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user4.home.index');
         }else if(auth()->user()->jabatan_id == '9'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user5.home.index');
         }else if(auth()->user()->jabatan_id == '10'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user6.home.index');
         }else if(auth()->user()->jabatan_id == '11'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user7.home.index');
         }else if(auth()->user()->jabatan_id == '12'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user8.home.index');
         }else if(auth()->user()->jabatan_id == '13'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user9.home.index');
         }else if(auth()->user()->jabatan_id == '14'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user10.home.index');
         }else if(auth()->user()->jabatan_id == '15'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user11.home.index');
         }else if(auth()->user()->jabatan_id == '16'){
-            return redirect()->route('user2.home.index');
+            return redirect()->route('user12.home.index');
         }else {
             return redirect()->route('login');
         }

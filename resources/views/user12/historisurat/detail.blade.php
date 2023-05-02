@@ -125,7 +125,7 @@
                         </div>
                         <div class="invoice-buttons text-right d-print-none">
                             <a href="#" onclick="window.print();" class="invoice-btn"><i class="ti-printer"></i> Print</a>
-                            <a href="{{ route('user3.suratmasukuser3.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
+                            <a href="{{ route('user12.suratmasukuser12.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
                         </div>
                     </div>
                 </div>
