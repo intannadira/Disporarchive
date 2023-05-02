@@ -18,14 +18,14 @@ class HistoriSuratAdmin1Controller extends Controller
         //datatable
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
-            // ->where('status','didisposisi')
+            ->whereIn('status',['diverifikasi-kasubag','diverifikasi-sekdin','selesai','didisposisi'])
             ->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
                 //status
                 ->addColumn('h_status', function ($data) {
-                    if ($data->status == 'diterima') {
+                    if ($data->status == 'diajukan') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-danger">Menunggu</a>';
                     }
                     if ($data->status == 'didisposisi') {
@@ -131,7 +131,7 @@ class HistoriSuratAdmin1Controller extends Controller
                     'tanggal_terima'              => $request->tanggal_terima,
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
-                    'status'                      => 'diterima',
+                    'status'                      => 'diajukan',
                     'lampiran'                    => $request->lampiran,
                 ]
             );

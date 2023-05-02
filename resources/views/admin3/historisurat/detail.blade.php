@@ -80,7 +80,7 @@
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
-                                                    @if ($surat->status == 'diterima')
+                                                    @if ($surat->status == 'diajukan')
                                                     <span class="badge badge-success">{{ $surat->status }}</span>
                                                     @else
                                                     <span class="badge badge-warning">{{ $surat->status }}</span>
@@ -90,7 +90,9 @@
                                             <tr>
                                                 <td>Diteruskan Kepada</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->jabatan_bidang->nama_jabatan_bidang }}</td>
+                                                <td>
+                                                    {{ $surat->jabatan_bidang->nama_jabatan_bidang }}
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal</td>

@@ -75,7 +75,7 @@
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
-                                                    @if ($surat->status == 'diterima')
+                                                    @if ($surat->status == 'diajukan')
                                                     <span class="badge badge-success">{{ $surat->status }}</span>
                                                     @else
                                                     <span class="badge badge-warning">{{ $surat->status }}</span>

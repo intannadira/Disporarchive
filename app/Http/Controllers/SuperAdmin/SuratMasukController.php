@@ -22,7 +22,7 @@ class SuratMasukController extends Controller
                 ->addIndexColumn()
                 //status
                 ->addColumn('h_status', function ($data) {
-                    if ($data->status == 'diterima') {
+                    if ($data->status == 'diajukan') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-danger">Menunggu</a>';
                     }
                     if ($data->status == 'didisposisi') {
@@ -129,7 +129,7 @@ class SuratMasukController extends Controller
                     'tanggal_terima'              => $request->tanggal_terima,
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
-                    'status'                      => 'diverifikasi-kasubag',
+                    'status'                      => 'diajukan',
                     'lampiran'                    => $request->lampiran,
                 ]
             );

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('kepada');
             $table->enum('kategori_surat', ['segera', 'sangat-segera', 'biasa']);
             $table->string('isi_disposisi');
-            $table->enum('status', ['diterima','didisposisi','dilaksanakan','diverifikasi-kasubag','diverifikasi_sekdin','selesai']);
+            $table->enum('status', ['diajukan','didisposisi','dilaksanakan','diverifikasi-kasubag','diverifikasi_sekdin','selesai']);
             $table->string('lampiran');
             $table->enum('tindakan', ['revisi','diajukan']);
             $table->integer('jabatan_bidang_id');

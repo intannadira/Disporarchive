@@ -75,7 +75,7 @@
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
-                                                    @if ($surat->status == 'diterima')
+                                                    @if ($surat->status == 'diajukan')
                                                     <span class="badge badge-success">{{ $surat->status }}</span>
                                                     @else
                                                     <span class="badge badge-warning">{{ $surat->status }}</span>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="invoice-buttons text-right d-print-none">
                             <a href="#" onclick="window.print();" class="invoice-btn"><i class="ti-printer"></i> Print</a>
-                            <a href="{{ route('superadmin.suratmasuk.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
+                            <a href="{{ route('admin2.suratmasukadmin2.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

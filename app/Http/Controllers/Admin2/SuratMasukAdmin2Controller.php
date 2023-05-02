@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin2;
 
+use App\Models\Karyawan;
 use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use App\Models\JabatanBidang;
@@ -24,7 +25,7 @@ class SuratMasukAdmin2Controller extends Controller
                 ->addIndexColumn()
                 //status
                 ->addColumn('h_status', function ($data) {
-                    if ($data->status == 'diterima') {
+                    if ($data->status == 'diajukan') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-danger">Menunggu</a>';
                     }
                     if ($data->status == 'didisposisi') {
@@ -47,7 +48,6 @@ class SuratMasukAdmin2Controller extends Controller
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
-                            <a href="surat-masuk/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit(' . $row->id . ')"><i class="ti-pencil-alt"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="delete_data(' . $row->id . ')"><i class="ti-trash"></i></a>
                             </center>';
@@ -58,17 +58,19 @@ class SuratMasukAdmin2Controller extends Controller
         }
 
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
+        $karyawan = Karyawan::select('id', 'nama')->get();
 
         return view('admin2.suratmasuk.index', [
             'title'     => 'Surat Masuk',
-            'jabatan'   => $jabatan
+            'jabatan'   => $jabatan,
+            'karyawan'  => $karyawan
         ]);
     }
 
     function detail_surat(Request $request)
     {
         $kode = $request->get('kode');
-        $surat = SuratMasuk::where('id', $kode)->first();
+        $surat = SuratMasuk::with(['jabatan_bidang', 'karyawan'])->where('id', $kode)->first();
 
         return view('admin2.suratmasuk.detail', [
             'title' => 'Detail Surat Masuk',
@@ -127,7 +129,7 @@ class SuratMasukAdmin2Controller extends Controller
                     'tanggal_terima'              => $request->tanggal_terima,
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
-                    'status'                      => 'diterima',
+                    'status'                      => 'diajukan',
                     'lampiran'                    => $request->lampiran,
                 ]
             );
