@@ -49,12 +49,23 @@ use App\Http\Controllers\User11\SuratMasukUser11Controller;
 use App\Http\Controllers\User12\SuratMasukUser12Controller;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
+use App\Http\Controllers\User1\DisposisiSayaUser1Controller;
+use App\Http\Controllers\User2\DisposisiSayaUser2Controller;
+use App\Http\Controllers\User3\DisposisiSayaUser3Controller;
+use App\Http\Controllers\User4\DisposisiSayaUser4Controller;
+use App\Http\Controllers\User5\DisposisiSayaUser5Controller;
+use App\Http\Controllers\User6\DisposisiSayaUser6Controller;
+use App\Http\Controllers\User7\DisposisiSayaUser7Controller;
+use App\Http\Controllers\User8\DisposisiSayaUser8Controller;
+use App\Http\Controllers\User9\DisposisiSayaUser9Controller;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
 use App\Http\Controllers\Admin2\HistoriSuratAdmin2Controller;
 use App\Http\Controllers\Admin3\HistoriSuratAdmin3Controller;
 use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Admin1\DisposisiSayaAdmin1Controller;
 use App\Http\Controllers\Admin2\DisposisiSayaAdmin2Controller;
+use App\Http\Controllers\User10\DisposisiSayaUser10Controller;
+use App\Http\Controllers\User11\DisposisiSayaUser11Controller;
 use App\Http\Controllers\Supir\LaporanController as LaporanSupirController;
 /*
 |--------------------------------------------------------------------------
@@ -242,7 +253,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('historisuratuser1', HistoriSuratUser1Controller::class);
             Route::get('histori-suratuser1/detail', [HistoriSuratUser1Controller::class, 'detail_surat'])->name('historisuratuser1.detail');
-
+            //DisposisiSayaUser1
+            Route::resource('disposisisayauser1', DisposisiSayaUser1Controller::class);
+            Route::get('disposisi-sayauser1/detail', [DisposisiSayaUser1Controller::class, 'detail_surat'])->name('disposisisayauser1.detail');
         });
 
     });
@@ -258,6 +271,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser2', SuratMasukUser2Controller::class);
             Route::get('surat-masukuser2/detail', [SuratMasukUser2Controller::class, 'detail_surat'])->name('suratmasukuser2.detail');
+            //DisposisiSayaUser2
+            Route::resource('disposisisayauser2', DisposisiSayaUser2Controller::class);
+            Route::get('disposisi-sayauser2/detail', [DisposisiSayaUser2Controller::class, 'detail_surat'])->name('disposisisayauser2.detail');
         });
 
     });
@@ -273,6 +289,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser3', SuratMasukUser3Controller::class);
             Route::get('surat-masukuser3/detail', [SuratMasukUser3Controller::class, 'detail_surat'])->name('suratmasukuser3.detail');
+            //DisposisiSayaUser3
+            Route::resource('disposisisayauser3', DisposisiSayaUser3Controller::class);
+            Route::get('disposisi-sayauser3/detail', [DisposisiSayaUser3Controller::class, 'detail_surat'])->name('disposisisayauser3.detail');
         });
 
     });
@@ -288,6 +307,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser4', SuratMasukUser4Controller::class);
             Route::get('surat-masukuser4/detail', [SuratMasukUser4Controller::class, 'detail_surat'])->name('suratmasukuser4.detail');
+            //DisposisiSayaUser4
+            Route::resource('disposisisayauser4', DisposisiSayaUser4Controller::class);
+            Route::get('disposisi-sayauser4/detail', [DisposisiSayaUser4Controller::class, 'detail_surat'])->name('disposisisayauser4.detail');
         });
 
     });
@@ -303,6 +325,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser5', SuratMasukUser5Controller::class);
             Route::get('surat-masukuser5/detail', [SuratMasukUser5Controller::class, 'detail_surat'])->name('suratmasukuser5.detail');
+            //DisposisiSayaUser5
+            Route::resource('disposisisayauser5', DisposisiSayaUser5Controller::class);
+            Route::get('disposisi-sayauser5/detail', [DisposisiSayaUser5Controller::class, 'detail_surat'])->name('disposisisayauser5.detail');
         });
 
     });
@@ -318,6 +343,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser6', SuratMasukUser6Controller::class);
             Route::get('surat-masukuser6/detail', [SuratMasukUser6Controller::class, 'detail_surat'])->name('suratmasukuser6.detail');
+            //DisposisiSayaUser6
+            Route::resource('disposisisayauser6', DisposisiSayaUser6Controller::class);
+            Route::get('disposisi-sayauser6/detail', [DisposisiSayaUser6Controller::class, 'detail_surat'])->name('disposisisayauser6.detail');
         });
 
     });
@@ -333,6 +361,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser7', SuratMasukUser7Controller::class);
             Route::get('surat-masukuser7/detail', [SuratMasukUser7Controller::class, 'detail_surat'])->name('suratmasukuser7.detail');
+            //DisposisiSayaUser7
+            Route::resource('disposisisayauser7', DisposisiSayaUser7Controller::class);
+            Route::get('disposisi-sayauser7/detail', [DisposisiSayaUser7Controller::class, 'detail_surat'])->name('disposisisayauser7.detail');
         });
 
     });
@@ -348,6 +379,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser8', SuratMasukUser8Controller::class);
             Route::get('surat-masukuser8/detail', [SuratMasukUser8Controller::class, 'detail_surat'])->name('suratmasukuser8.detail');
+            //DisposisiSayaUser8
+            Route::resource('disposisisayauser8', DisposisiSayaUser8Controller::class);
+            Route::get('disposisi-sayauser8/detail', [DisposisiSayaUser8Controller::class, 'detail_surat'])->name('disposisisayauser8.detail');
         });
 
     });
@@ -363,6 +397,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser9', SuratMasukUser9Controller::class);
             Route::get('surat-masukuser9/detail', [SuratMasukUser9Controller::class, 'detail_surat'])->name('suratmasukuser9.detail');
+            //DisposisiSayaUser9
+            Route::resource('disposisisayauser9', DisposisiSayaUser9Controller::class);
+            Route::get('disposisi-sayauser9/detail', [DisposisiSayaUser9Controller::class, 'detail_surat'])->name('disposisisayauser9.detail');
         });
 
     });
@@ -378,6 +415,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser10', SuratMasukUser10Controller::class);
             Route::get('surat-masukuser10/detail', [SuratMasukUser10Controller::class, 'detail_surat'])->name('suratmasukuser10.detail');
+            //DisposisiSayaUser10
+            Route::resource('disposisisayauser10', DisposisiSayaUser10Controller::class);
+            Route::get('disposisi-sayauser10/detail', [DisposisiSayaUser10Controller::class, 'detail_surat'])->name('disposisisayauser10.detail');
         });
 
     });
@@ -393,6 +433,9 @@ Route::group([
             //HistoriSuratUser1Controller
             Route::resource('suratmasukuser11', SuratMasukUser11Controller::class);
             Route::get('surat-masukuser11/detail', [SuratMasukUser11Controller::class, 'detail_surat'])->name('suratmasukuser11.detail');
+            //DisposisiSayaUser11
+            Route::resource('disposisisayauser11', DisposisiSayaUser11Controller::class);
+            Route::get('disposisi-sayauser11/detail', [DisposisiSayaUser11Controller::class, 'detail_surat'])->name('disposisisayauser11.detail');
         });
 
     });

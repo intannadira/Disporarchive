@@ -41,46 +41,57 @@
                         @if ( auth()->user()->jabatan_id == '5')
                         <li class="active"><a href="{{ route('user1.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user1.historisuratuser1.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user1.disposisisayauser1.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '6')
                         <li class="active"><a href="{{ route('user2.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user2.suratmasukuser2.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user2.disposisisayauser2.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '7')
                         <li class="active"><a href="{{ route('user3.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user3.suratmasukuser3.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user3.disposisisayauser3.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '8')
                         <li class="active"><a href="{{ route('user4.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user4.suratmasukuser4.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user4.disposisisayauser4.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '9')
                         <li class="active"><a href="{{ route('user5.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user5.suratmasukuser5.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user5.disposisisayauser5.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '10')
                         <li class="active"><a href="{{ route('user6.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user6.suratmasukuser6.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user6.disposisisayauser6.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '11')
                         <li class="active"><a href="{{ route('user7.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user7.suratmasukuser7.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user7.disposisisayauser7.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '12')
                         <li class="active"><a href="{{ route('user8.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user8.suratmasukuser8.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user8.disposisisayauser8.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '13')
                         <li class="active"><a href="{{ route('user9.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user9.suratmasukuser9.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user9.disposisisayauser9.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '14')
                         <li class="active"><a href="{{ route('user10.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user10.suratmasukuser10.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user10.disposisisayauser10.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '15')
                         <li class="active"><a href="{{ route('user11.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                         <li><a href="{{ route('user11.suratmasukuser11.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                        <li><a href="{{ route('user11.disposisisayauser11.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif
                         @if ( auth()->user()->jabatan_id == '16')
                         <li class="active"><a href="{{ route('user12.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
