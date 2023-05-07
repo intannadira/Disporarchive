@@ -71,6 +71,12 @@
                                 <strong id="kategori_surat"></strong>
                             </span>
                         </div>
+                        <div class="col-md-5 col-12 mb-3">
+                        </div>
+                        <h6>Isi Form Dibawah Ini :</h6>
+                        <div class="col-md-12 col-12 mb-3">
+                            <hr>
+                        </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Jabatan</label>
                             <select name="jabatan_bidang_id" class="form-control selectpicker"
