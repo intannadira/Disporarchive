@@ -20,6 +20,10 @@ class SuratKeluarController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('tanggal_surat', function ($row) {
+                    $tanggal_surat = date('d-m-Y', strtotime($row->tanggal_surat));
+                    return $tanggal_surat;
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
@@ -29,7 +33,7 @@ class SuratKeluarController extends Controller
                             </center>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'tanggal_surat'])
                 ->make(true);
         }
 

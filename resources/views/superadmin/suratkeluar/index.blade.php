@@ -103,6 +103,7 @@
                 {data: 'perihal', name: 'perihal'},
                 {data: 'tanggal_surat', name: 'tanggal_surat'},
                 {data: 'tujuan_surat', name: 'tujuan_surat'},
+                {data: 'deskripsi', name: 'deskripsi'},
                 {data: 'action', name: 'action'},
             ],
         });

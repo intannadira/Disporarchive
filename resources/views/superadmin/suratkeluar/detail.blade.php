@@ -31,29 +31,9 @@
                                     <div class="col-md-7">
                                         <table class="table table-sm table-borderless">
                                             <tr>
-                                                <td>Dari</td>
-                                                <td>:</td>
-                                                <td>{{ $surat->dari_instansi }}</td>
-                                            </tr>
-                                            <tr>
                                                 <td>No Surat</td>
                                                 <td>:</td>
                                                 <td><strong>{{ $surat->no_surat }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tanggal Surat</td>
-                                                <td>:</td>
-                                                <td><strong>{{ date('d-m-Y', strtotime($surat->tanggal_surat)) }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tanggal Terima</td>
-                                                <td>:</td>
-                                                <td><strong>{{ date('d-m-Y', strtotime($surat->tanggal_terima)) }}</strong></td>
-                                            </tr>
-                                            <tr>
-                                                <td>No Agenda</td>
-                                                <td>:</td>
-                                                <td>{{ $surat->no_urut }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Perihal</td>
@@ -61,52 +41,29 @@
                                                 <td>{{ $surat->perihal }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Kategori Surat</td>
+                                                <td>Tanggal Surat</td>
                                                 <td>:</td>
-                                                <td>
-                                                    @if ($surat->kategori_surat == 'Segera')
-                                                    <span class="badge badge-primary">{{ $surat->kategori_surat }}</span>
-                                                    @else
-                                                    <span class="badge badge-success">{{ $surat->kategori_surat }}</span>
-                                                    @endif
-                                                </td>
+                                                <td><strong>{{ date('d-m-Y', strtotime($surat->tanggal_surat)) }}</strong></td>
                                             </tr>
                                             <tr>
-                                                <td>Status</td>
+                                                <td>Tujuan Surat</td>
                                                 <td>:</td>
-                                                <td>
-                                                    @if ($surat->status == 'diajukan')
-                                                    <span class="badge badge-success">{{ $surat->status }}</span>
-                                                    @else
-                                                    <span class="badge badge-warning">{{ $surat->status }}</span>
-                                                    @endif
-                                                </td>
+                                                <td><strong>{{ $surat->tujuan_surat }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Deskripsi</td>
+                                                <td>:</td>
+                                                <td><strong>{{ $surat->deskripsi }}</strong></td>
                                             </tr>
                                         </table>
                                     </div>
                                     <div class="col-md-3"></div>
-                                    {{-- <div class="col-md-4 text-right">
-                                        <table class="table table-sm table-borderless">
-                                            
-                                            <tr>
-                                                <td>Bukti</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <a href="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                        target="_blank">
-                                                        <img src="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                            alt="" width="100px">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                         <div class="invoice-buttons text-right d-print-none">
                             <a href="#" onclick="window.print();" class="invoice-btn"><i class="ti-printer"></i> Print</a>
-                            <a href="{{ route('superadmin.suratmasuk.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
+                            <a href="{{ route('superadmin.suratkeluar.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

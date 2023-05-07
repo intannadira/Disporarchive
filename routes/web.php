@@ -141,6 +141,8 @@ Route::group([
             Route::resource('suratmasuk', SuratMasukController::class);
             //suratkeluar
             Route::resource('suratkeluar', SuratKeluarController::class);
+            Route::get('surat-keluar/detail', [SuratKeluarController::class, 'detail_surat'])->name('suratkeluar.detail');
+
             Route::get('surat-masuk/detail', [SuratMasukController::class, 'detail_surat'])->name('suratmasuk.detail');
             //Histori Surat
             Route::resource('historisurat', HistoriSuratController::class);
