@@ -42,11 +42,11 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th>No</th>
-                                    <th>No Agenda</th>
-                                    <th>Tanggal Diterima</th>
-                                    <th>Status</th>
-                                    <th>Instansi</th>
+                                    <th>No Surat</th>
                                     <th>Perihal</th>
+                                    <th>Tanggal Surat</th>
+                                    <th>Tujuan Surat</th>
+                                    <th>Deskripsi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -99,11 +99,10 @@
             },
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false},
-                {data: 'no_urut', name: 'no_urut'},
-                {data: 'tanggal_terima', name: 'tanggal_terima'},
-                {data: 'h_status', name: 'h_status'},
-                {data: 'dari_instansi', name: 'dari_instansi'},
+                {data: 'no_surat', name: 'no_surat'},
                 {data: 'perihal', name: 'perihal'},
+                {data: 'tanggal_surat', name: 'tanggal_surat'},
+                {data: 'tujuan_surat', name: 'tujuan_surat'},
                 {data: 'action', name: 'action'},
             ],
         });
@@ -119,8 +118,11 @@
 
     function add(){
       $('#form')[0].reset(); // reset form on modals
-      $('#nama').html("");
-      $('#jabatan_bidang_id').html("");
+      $('#no_surat').html("");
+      $('#perihal').html("");
+      $('#tanggal_surat').html("");
+      $('#tujuan_surat').html("");
+      $('#deskripsi').html("");
       $('#modal-form').modal('show'); // show bootstrap modal
       $('.modal-title').text('Tambah Data Surat Keluar'); // Set Title to Bootstrap modal title
     }
@@ -131,17 +133,13 @@
 
     function save(){
         $('#nama').html("");
-        $('#no_urut').html("");
-        $('#dari_instansi').html("");
         $('#no_surat').html("");
         $('#perihal').html("");
-        $('#tanggal_terima').html("");
         $('#tanggal_surat').html("");
-        $('#kepada').html("");
-        $('#kategori_surat').html("");
-        $('#status').html("");
+        $('#tujuan_surat').html("");
+        $('#deskripsi').html("");
         $.ajax({
-            url : "{{ route('superadmin.suratmasuk.store')}}",
+            url : "{{ route('superadmin.suratkeluar.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -151,29 +149,20 @@
                     reload_table();
                     sukses();
                 }else{
-                    if(data.errors.no_urut){
-                        $('#no_urut').text(data.errors.no_urut[0]);
-                    }
-                    if(data.errors.dari_instansi){
-                        $('#dari_instansi').text(data.errors.dari_instansi[0]);
-                    }
                     if(data.errors.no_surat){
                         $('#no_surat').text(data.errors.no_surat[0]);
                     }
                     if(data.errors.perihal){
                         $('#perihal').text(data.errors.perihal[0]);
                     }
-                    if(data.errors.tanggal_terima){
-                        $('#tanggal_terima').text(data.errors.tanggal_terima[0]);
-                    }
                     if(data.errors.tanggal_surat){
                         $('#tanggal_surat').text(data.errors.tanggal_surat[0]);
                     }
-                    if(data.errors.kepada){
-                        $('#kepada').text(data.errors.kepada[0]);
+                    if(data.errors.tujuan_surat){
+                        $('#tujuan_surat').text(data.errors.tujuan_surat[0]);
                     }
-                    if(data.errors.kategori_surat){
-                        $('#kategori_surat').text(data.errors.kategori_surat[0]);
+                    if(data.errors.deskripsi){
+                        $('#deskripsi').text(data.errors.deskripsi[0]);
                     }
                 }
             },
@@ -202,31 +191,25 @@
 
     function edit(id){
         $('#form')[0].reset(); // reset form on modals
-        $('#no_urut').html("");
-        $('#dari_instansi').html("");
         $('#no_surat').html("");
         $('#perihal').html("");
-        $('#tanggal_terima').html("");
         $('#tanggal_surat').html("");
-        $('#kepada').html("");
-        $('#kategori_surat').html("");
+        $('#tujuan_surat').html("");
+        $('#deskripsi').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/suratmasuk/" + id,
+            url : "/superadmin/suratkeluar/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
                 $('[name="id"]').val(data.id);
-                $('[name="no_urut"]').val(data.no_urut);
-                $('[name="dari_instansi"]').val(data.dari_instansi);
                 $('[name="no_surat"]').val(data.no_surat);
                 $('[name="perihal"]').val(data.perihal);
-                $('[name="tanggal_terima"]').val(data.tanggal_terima);
                 $('[name="tanggal_surat"]').val(data.tanggal_surat);
-                $('[name="kepada"]').val(data.kepada);
-                $('[name="kategori_surat"]').val(data.kategori_surat);
+                $('[name="tujuan_surat"]').val(data.tujuan_surat);
+                $('[name="deskripsi"]').val(data.deskripsi);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit Data Surat Masuk'); // Set title to Bootstrap modal title   
+                $('.modal-title').text('Edit Data Surat Keluar'); // Set title to Bootstrap modal title   
             },
             error: function (jqXHR, textStatus , errorThrown) {
                 alert(errorThrown);
@@ -252,7 +235,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/suratmasuk/" + id,
+            url : "/superadmin/suratkeluar/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

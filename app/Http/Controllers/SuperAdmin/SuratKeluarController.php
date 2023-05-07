@@ -20,38 +20,16 @@ class SuratKeluarController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
-                //status
-                ->addColumn('h_status', function ($data) {
-                    if ($data->status == 'diajukan') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-danger">Menunggu</a>';
-                    }
-                    if ($data->status == 'didisposisi') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-warning">Disposisi</a>';
-                    }
-                    if ($data->status == 'dilaksanakan') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-primary">Dilaksanakan</a>';
-                    }
-                    if ($data->status == 'diverifikasi-kasubag') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-warning">Diverfikasi Kasub</a>';
-                    }
-                    if ($data->status == 'diverifikasi-sekdin') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-secondary">Diverifikasi Sekdin</a>';
-                    }
-                    if ($data->status == 'selesai') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-success">Selesai</a>';
-                    }
-                    return $status;
-                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
-                            <a href="surat-masuk/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
+                            <a href="surat-keluar/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit(' . $row->id . ')"><i class="ti-pencil-alt"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="delete_data(' . $row->id . ')"><i class="ti-trash"></i></a>
                             </center>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action', 'h_status'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
@@ -88,11 +66,11 @@ class SuratKeluarController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'no_surat'        => 'required',
-            'perihal'  => 'required',
+            'no_surat'            => 'required',
+            'perihal'             => 'required',
             'tanggal_surat'       => 'required',
             'tujuan_surat'        => 'required',
-            'deskripsi'  => 'required',
+            'deskripsi'           => 'required',
         ]);
 
         if ($validator->fails()) {
