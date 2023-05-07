@@ -18,7 +18,7 @@
                                 <div class="seo-fact sbg1">
                                     <div class="p-4 d-flex justify-content-between align-items-center">
                                         <div class="seofct-icon"><i class="ti-bar-chart-alt"></i>Total Surat Selesai</div>
-                                        <h2>{{ $total_surat_masuk }}</h2>
+                                        <h2>{{ $total_surat_selesai }}</h2>
                                     </div>
                                     <canvas id="seolinechart1" height="50"></canvas>
                                 </div>
@@ -28,8 +28,8 @@
                             <div class="card">
                                 <div class="seo-fact sbg2">
                                     <div class="p-4 d-flex justify-content-between align-items-center">
-                                        <div class="seofct-icon"><i class="ti-briefcase"></i> Konfirmasi Surat Terdeposisi</div>
-                                        <h2>{{ $total_surat_keluar }}</h2>
+                                        <div class="seofct-icon"><i class="ti-briefcase"></i>Surat Terdeposisi Saya</div>
+                                        <h2>{{ $total_surat_didisposisi }}</h2>
                                     </div>
                                     <canvas id="seolinechart2" height="50"></canvas>
                                 </div>

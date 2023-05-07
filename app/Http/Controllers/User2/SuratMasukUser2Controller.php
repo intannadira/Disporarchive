@@ -18,6 +18,7 @@ class SuratMasukUser2Controller extends Controller
         //datatable
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
+            ->where('status', '!=', 'diajukan')
             ->get();
 
             return Datatables::of($data)

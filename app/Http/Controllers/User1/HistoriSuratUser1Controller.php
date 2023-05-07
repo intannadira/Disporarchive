@@ -18,6 +18,7 @@ class HistoriSuratUser1Controller extends Controller
         //datatable
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
+            ->where('status', '!=', 'diajukan')
             ->get();
 
             return Datatables::of($data)
@@ -64,7 +65,7 @@ class HistoriSuratUser1Controller extends Controller
         $karyawan = Karyawan::select('id', 'nama')->get();
 
         return view('user1.historisurat.index', [
-            'title'     => 'Surat Masuk',
+            'title'     => 'Histori Surat',
             'jabatan'   => $jabatan,
             'karyawan'  => $karyawan
         ]);
