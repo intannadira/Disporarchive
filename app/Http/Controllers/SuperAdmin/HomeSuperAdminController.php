@@ -48,7 +48,7 @@ class HomeSuperAdminController extends Controller
 
     function total_surat_diproses(){
         $surat_diproses = DB::table('surat_masuk')
-        ->where('status', '=', '1')
+        ->whereIn('status', ['diajukan', 'didisposisi', 'dilaksanakan', 'diverifikasi-kasubag', 'diverifikasi-sekdin'])
         ->count();
         
         if($surat_diproses){
@@ -60,7 +60,7 @@ class HomeSuperAdminController extends Controller
 
     function total_surat_selesai(){
         $surat_selesai = DB::table('surat_masuk')
-        ->where('status', '=', '2')
+        ->where('status', '=', 'selesai')
         ->count();
         
         if($surat_selesai){
