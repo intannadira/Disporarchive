@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-@include('admin2.suratmasuk.modal')
+@include('user5.disposisisaya.modal')
 
 <!-- main content area end -->
 @endsection
@@ -133,7 +133,7 @@
         $('#tindakan_kadin').html("");
         $('#catatan_kadin').html("");
         $.ajax({
-            url : "{{ route('admin1.suratmasukadmin1.store')}}",
+            url : "{{ route('user5.disposisisayauser5.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -199,7 +199,7 @@
         $('#tindakan').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/user5/disposisisayauser5/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -240,7 +240,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/user5/disposisisayauser5/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

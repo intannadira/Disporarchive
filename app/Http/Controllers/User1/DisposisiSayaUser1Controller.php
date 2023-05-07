@@ -54,6 +54,7 @@ class DisposisiSayaUser1Controller extends Controller
                     $actionBtn = '
                             <center>
                             <a href="disposisi-sayauser1/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-success" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit(' . $row->id . ')"><i class="ti-check"> Konfirmasi</i></a>
                             </center>';
                     return $actionBtn;
                 })
@@ -80,5 +81,101 @@ class DisposisiSayaUser1Controller extends Controller
             'title' => 'Disposisi Surat',
             'surat' => $surat
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'tindakan'       => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        }
+
+        if ($request->id) {
+
+            //if request tindakan diajukan 
+            if ($request->tindakan == 'selesai') {
+                SuratMasuk::find($request->id)->update(
+                    [
+                        'status'                      => 'selesai',
+                    ]
+                );
+            }else{
+                SuratMasuk::find($request->id)->update(
+                    [
+                        'status'                      => 'didisposisi',
+                    ]
+                );
+            }
+
+            
+        } else {
+
+            SuratMasuk::Create(
+                [
+                    'no_urut'                     => $request->no_urut,
+                    'dari_instansi'               => $request->dari_instansi,
+                    'no_surat'                    => $request->no_surat,
+                    'perihal'                     => $request->perihal,
+                    'tanggal_surat'               => $request->tanggal_surat,
+                    'tanggal_terima'              => $request->tanggal_terima,
+                    'kepada'                      => $request->kepada,
+                    'kategori_surat'              => $request->kategori_surat,
+                    'status'                      => 'diajukan',
+                    'lampiran'                    => $request->lampiran,
+                ]
+            );
+        }
+
+        return response()->json(['status' => true]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = SuratMasuk::find($id);
+        return response()->json($data);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $data = SuratMasuk::find($id);
+        $data->delete();
+        return response()->json(['status' => true]);
     }
 }

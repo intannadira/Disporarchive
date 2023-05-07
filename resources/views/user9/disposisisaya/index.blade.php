@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-@include('admin2.suratmasuk.modal')
+@include('user9.disposisisaya.modal')
 
 <!-- main content area end -->
 @endsection
@@ -133,7 +133,7 @@
         $('#tindakan_kadin').html("");
         $('#catatan_kadin').html("");
         $.ajax({
-            url : "{{ route('admin1.suratmasukadmin1.store')}}",
+            url : "{{ route('user9.disposisisayauser9.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -199,7 +199,7 @@
         $('#tindakan').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/user9/disposisisayauser9/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -214,7 +214,7 @@
                 $('[name="kategori_surat"]').val(data.kategori_surat);
                 $('[name="tindakan"]').val(data.tindakan);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit Data Surat Masuk'); // Set title to Bootstrap modal title   
+                $('.modal-title').text('Konfirmasi Surat Disposisi'); // Set title to Bootstrap modal title   
             },
             error: function (jqXHR, textStatus , errorThrown) {
                 alert(errorThrown);
@@ -240,7 +240,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/admin1/suratmasukadmin1/" + id,
+            url : "/user9/disposisisayauser9/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){
