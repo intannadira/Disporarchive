@@ -130,6 +130,7 @@
     }
 
     function save(){
+        var formData = new FormData($('#form')[0]);
         $('#nama').html("");
         $('#no_urut').html("");
         $('#dari_instansi').html("");
@@ -138,12 +139,15 @@
         $('#tanggal_terima').html("");
         $('#tanggal_surat').html("");
         $('#kepada').html("");
+        $('#lampiran').html("");
         $('#kategori_surat').html("");
         $('#status').html("");
         $.ajax({
             url : "{{ route('superadmin.suratmasuk.store')}}",
             type: "POST",
-            data: $('#form').serialize(),
+            data: formData,
+            processData: false,
+            contentType: false,
             dataType: "JSON",
             success: function(data){
                 if(data.status) {
@@ -171,6 +175,9 @@
                     }
                     if(data.errors.kepada){
                         $('#kepada').text(data.errors.kepada[0]);
+                    }
+                    if(data.errors.lampiran){
+                        $('#lampiran').text(data.errors.lampiran[0]);
                     }
                     if(data.errors.kategori_surat){
                         $('#kategori_surat').text(data.errors.kategori_surat[0]);

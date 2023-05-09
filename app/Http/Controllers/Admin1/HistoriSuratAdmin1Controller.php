@@ -52,7 +52,7 @@ class HistoriSuratAdmin1Controller extends Controller
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                             <center>
-                            <a href="histori-suratadmin2/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
+                            <a href="histori-suratadmin1/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
                             </center>';
                     return $actionBtn;
                 })

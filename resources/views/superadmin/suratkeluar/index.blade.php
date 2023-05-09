@@ -123,6 +123,8 @@
       $('#perihal').html("");
       $('#tanggal_surat').html("");
       $('#tujuan_surat').html("");
+      $('#tipe_surat').html("");
+      $('#lampiran').html("");
       $('#deskripsi').html("");
       $('#modal-form').modal('show'); // show bootstrap modal
       $('.modal-title').text('Tambah Data Surat Keluar'); // Set Title to Bootstrap modal title
@@ -133,16 +135,21 @@
     }
 
     function save(){
+        var formData = new FormData($('#form')[0]);
         $('#nama').html("");
         $('#no_surat').html("");
         $('#perihal').html("");
         $('#tanggal_surat').html("");
         $('#tujuan_surat').html("");
+        $('#tipe_surat').html("");
+        $('#lampiran').html("");
         $('#deskripsi').html("");
         $.ajax({
             url : "{{ route('superadmin.suratkeluar.store')}}",
             type: "POST",
-            data: $('#form').serialize(),
+            data: formData,
+            processData: false,
+            contentType: false,
             dataType: "JSON",
             success: function(data){
                 if(data.status) {
@@ -161,6 +168,12 @@
                     }
                     if(data.errors.tujuan_surat){
                         $('#tujuan_surat').text(data.errors.tujuan_surat[0]);
+                    }
+                    if(data.errors.tipe_surat){
+                        $('#tipe_surat').text(data.errors.tipe_surat[0]);
+                    }
+                    if(data.errors.lampiran){
+                        $('#lampiran').text(data.errors.lampiran[0]);
                     }
                     if(data.errors.deskripsi){
                         $('#deskripsi').text(data.errors.deskripsi[0]);
@@ -196,6 +209,7 @@
         $('#perihal').html("");
         $('#tanggal_surat').html("");
         $('#tujuan_surat').html("");
+        $('#tipe_surat').html("");
         $('#deskripsi').html("");
         //Ajax Load data from ajax
         $.ajax({
@@ -208,6 +222,7 @@
                 $('[name="perihal"]').val(data.perihal);
                 $('[name="tanggal_surat"]').val(data.tanggal_surat);
                 $('[name="tujuan_surat"]').val(data.tujuan_surat);
+                $('[name="tipe_surat"]').val(data.tipe_surat);
                 $('[name="deskripsi"]').val(data.deskripsi);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Edit Data Surat Keluar'); // Set title to Bootstrap modal title   

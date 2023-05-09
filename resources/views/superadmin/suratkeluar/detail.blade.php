@@ -23,6 +23,9 @@
                                         <p>Jl. Adisucipto No. 1 Manahan Surakarta (0271) 742207 Pswt: Fax (0271) 729101 SURAKARTA 57139</p>
                                         <br>
                                         <h6><b>DISPOSISI KEPALA DINAS KEPEMUDAAN DAN OLAHRAGA</b></h6>
+                                        <br>
+                                        <h6><b>SURAT KELUAR</b></h6>
+                                        <p><b>NO : {{ $surat->no_surat }}</b></p>
                                     </div>
                                 </div>
                             </div>
@@ -31,14 +34,9 @@
                                     <div class="col-md-7">
                                         <table class="table table-sm table-borderless">
                                             <tr>
-                                                <td>No Surat</td>
-                                                <td>:</td>
-                                                <td><strong>{{ $surat->no_surat }}</strong></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Perihal</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->perihal }}</td>
+                                                <td><strong>{{ $surat->perihal }}</strong>  </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Surat</td>
@@ -51,14 +49,35 @@
                                                 <td><strong>{{ $surat->tujuan_surat }}</strong></td>
                                             </tr>
                                             <tr>
+                                                <td>Tipe Surat</td>
+                                                <td>:</td>
+                                                <td><strong>{{ $surat->tipe_surat }}</strong></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Deskripsi</td>
                                                 <td>:</td>
                                                 <td><strong>{{ $surat->deskripsi }}</strong></td>
                                             </tr>
                                         </table>
                                     </div>
-                                    <div class="col-md-3"></div>
+                                    <br>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="col-md-5">
+                                <table class="table table-sm table-borderless">
+                                    <tr>
+                                        <td>Lampiran</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a href="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                target="_blank">
+                                                <img src="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                    alt="" width="100px">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <div class="invoice-buttons text-right d-print-none">

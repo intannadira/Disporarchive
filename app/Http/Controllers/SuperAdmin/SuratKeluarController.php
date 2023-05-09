@@ -74,11 +74,22 @@ class SuratKeluarController extends Controller
             'perihal'             => 'required',
             'tanggal_surat'       => 'required',
             'tujuan_surat'        => 'required',
+            'tipe_surat'          => 'required',
+            'lampiran'            => 'required',
             'deskripsi'           => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
+        }
+
+        //upload file
+        if($request->hasFile('lampiran')){
+            $file = $request->file('lampiran');
+            $file_name = time()."_".$file->getClientOriginalName();
+            $file->move('lampiran',$file_name);
+        }else{
+            $file_name = null;
         }
 
         if ($request->id) {
@@ -89,6 +100,8 @@ class SuratKeluarController extends Controller
                     'perihal'                 => $request->perihal,
                     'tanggal_surat'           => $request->tanggal_surat,
                     'tujuan_surat'            => $request->tujuan_surat,
+                    'tipe_surat'              => $request->tipe_surat,
+                    'lampiran'                => $file_name,
                     'deskripsi'               => $request->deskripsi,
                 ]
             );
@@ -100,6 +113,8 @@ class SuratKeluarController extends Controller
                     'perihal'                 => $request->perihal,
                     'tanggal_surat'           => $request->tanggal_surat,
                     'tujuan_surat'            => $request->tujuan_surat,
+                    'tipe_surat'              => $request->tipe_surat,
+                    'lampiran'                => $file_name,
                     'deskripsi'               => $request->deskripsi,
                 ]
             );

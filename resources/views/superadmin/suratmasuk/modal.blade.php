@@ -6,7 +6,8 @@
                 <h5 class="modal-title">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <form id="form">
+            <form id="form" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
                     <div class="form-row">
                         <input type="hidden" name="id">
@@ -71,13 +72,13 @@
                                 <strong id="kategori_surat"></strong>
                             </span>
                         </div>
-                        {{-- <div class="col-md-6 col-12 mb-3">
+                        <div class="col-md-6 col-12 mb-3">
                             <label>File Lampiran</label>
-                            <input type="file" class="form-control" name="lampiran">
+                            <input type="file" class="form-control" name="lampiran" placeholder="Masukkan Lampiran">
                             <span class="text-danger">
                                 <strong id="lampiran"></strong>
                             </span>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

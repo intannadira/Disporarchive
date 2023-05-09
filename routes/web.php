@@ -163,6 +163,7 @@ Route::group([
             Route::resource('home', HomeAdmin1Controller::class);
             //Surat Masuk
             Route::resource('suratmasukadmin1', SuratMasukAdmin1Controller::class);
+            Route::get('surat-masukadmin1/detail', [SuratMasukAdmin1Controller::class, 'detail_surat'])->name('historisuratadmin1.detail');
             //HistoriSuratMasukAdmin3
             Route::resource('historisuratadmin1', HistoriSuratAdmin1Controller::class);
             Route::get('histori-suratadmin1/detail', [HistoriSuratAdmin1Controller::class, 'detail_surat'])->name('historisuratadmin1.detail');

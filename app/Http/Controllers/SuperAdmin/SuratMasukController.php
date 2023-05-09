@@ -102,6 +102,15 @@ class SuratMasukController extends Controller
             return response()->json(['errors' => $validator->errors()]);
         }
 
+          //upload file
+          if($request->hasFile('lampiran')){
+            $file = $request->file('lampiran');
+            $file_name = time()."_".$file->getClientOriginalName();
+            $file->move('lampiran',$file_name);
+        }else{
+            $file_name = null;
+        }
+
         if ($request->id) {
 
             SuratMasuk::find($request->id)->update(
@@ -114,7 +123,7 @@ class SuratMasukController extends Controller
                     'tanggal_terima'              => $request->tanggal_terima,
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
-                    'lampiran'                    => $request->lampiran,
+                    'lampiran'                    => $file_name
                 ]
             );
         } else {
@@ -130,7 +139,7 @@ class SuratMasukController extends Controller
                     'kepada'                      => $request->kepada,
                     'kategori_surat'              => $request->kategori_surat,
                     'status'                      => 'diajukan',
-                    'lampiran'                    => $request->lampiran,
+                    'lampiran'                    => $file_name,
                 ]
             );
         }

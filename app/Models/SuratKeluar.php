@@ -16,6 +16,8 @@ class SuratKeluar extends Model
         'perihal',
         'tanggal_surat',
         'tujuan_surat',
+        'tipe_surat',
+        'lampiran',
         'deskripsi',
     ];
 }

@@ -91,7 +91,11 @@
                                                 <td>Diteruskan Kepada</td>
                                                 <td>:</td>
                                                 <td>
+                                                    @if ($surat->jabatan_bidang == null)
+                                                    <span class="badge badge-danger">Belum Diteruskan</span>
+                                                    @else
                                                     {{ $surat->jabatan_bidang->nama_jabatan_bidang }}
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <tr>
@@ -102,17 +106,35 @@
                                             <tr>
                                                 <td>Disposisikan Kepada</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->karyawan->nama }}</td>
+                                                <td>
+                                                    @if($surat->karyawan == null)
+                                                    <span class="badge badge-danger">Belum Disposisikan</span>
+                                                    @else
+                                                    {{ $surat->karyawan->nama }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tindakan</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->tindakan_kadin }}</td>
+                                                <td>
+                                                    @if ($surat->tindakan_kadin == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    {{ $surat->tindakan_kadin }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Catatan Kadin</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->catatan_kadin }}</td>
+                                                <td>
+                                                    @if ($surat->catatan_kadin == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    {{ $surat->catatan_kadin }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Penyelesaian</td>
@@ -121,23 +143,23 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <div class="col-md-3"></div>
-                                    {{-- <div class="col-md-4 text-right">
-                                        <table class="table table-sm table-borderless">
-                                            
-                                            <tr>
-                                                <td>Bukti</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <a href="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                        target="_blank">
-                                                        <img src="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                            alt="" width="100px">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div> --}}
+                                   <br>
+                                </div>
+                                <hr>
+                                <div class="col-md-5">
+                                    <table class="table table-sm table-borderless">
+                                        <tr>
+                                            <td>Lampiran</td>
+                                            <td>:</td>
+                                            <td>
+                                                <a href="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                    target="_blank">
+                                                    <img src="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                        alt="" width="100px">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>

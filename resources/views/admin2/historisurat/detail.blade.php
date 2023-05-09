@@ -119,23 +119,23 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <div class="col-md-3"></div>
-                                    {{-- <div class="col-md-4 text-right">
-                                        <table class="table table-sm table-borderless">
-                                            
-                                            <tr>
-                                                <td>Bukti</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <a href="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                        target="_blank">
-                                                        <img src="{{ url('bukti_pembayaran/'.$pembayaran->bukti) }}"
-                                                            alt="" width="100px">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div> --}}
+                                    <br>
+                                </div>
+                                <hr>
+                                <div class="col-md-5">
+                                    <table class="table table-sm table-borderless">
+                                        <tr>
+                                            <td>Lampiran</td>
+                                            <td>:</td>
+                                            <td>
+                                                <a href="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                    target="_blank">
+                                                    <img src="{{ url('lampiran/'.$surat->lampiran) }}"
+                                                        alt="" width="100px">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
