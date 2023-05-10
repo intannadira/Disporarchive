@@ -81,10 +81,10 @@
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Tindakan</label>
-                            <select class="form-control" name="tindakan">
+                            <select class="form-control selectpicker" name="tindakan">
                                 <option value="">-- Pilih Tindakan --</option>
-                                <option value="diajukan">Diajukan</option>
                                 <option value="revisi">Koreksi ke Petugas</option>
+                                <option value="diajukan">Diajukan</option>
                             </select>
                             <span class="text-danger">
                                 <strong id="tindakan"></strong>

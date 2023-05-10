@@ -90,7 +90,13 @@
                                             <tr>
                                                 <td>Diteruskan Kepada</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->jabatan_bidang->nama_jabatan_bidang }}</td>
+                                                <td>
+                                                    @if ($surat->jabatan_bidang == null)
+                                                    <span class="badge badge-danger">Belum Diteruskan</span>
+                                                    @else
+                                                    {{ $surat->jabatan_bidang->nama_jabatan_bidang }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal</td>
@@ -100,22 +106,45 @@
                                             <tr>
                                                 <td>Disposisikan Kepada</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->karyawan->nama }}</td>
+                                                <td>
+                                                    @if($surat->karyawan == null)
+                                                    <span class="badge badge-danger">Belum Disposisikan</span>
+                                                    @else
+                                                    {{ $surat->karyawan->nama }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tindakan</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->tindakan_kadin }}</td>
+                                                <td>
+                                                    @if ($surat->tindakan_kadin == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    {{ $surat->tindakan_kadin }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Catatan Kadin</td>
                                                 <td>:</td>
-                                                <td>{{ $surat->catatan_kadin }}</td>
+                                                <td>
+                                                    @if ($surat->catatan_kadin == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    {{ $surat->catatan_kadin }}
+                                                    @endif
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tanggal Penyelesaian</td>
                                                 <td>:</td>
-                                                <td><strong>{{ date('d-m-Y h:i:s', strtotime($surat->tanggal_penyelesaian)) }}</strong></td>
+                                                <td>
+                                                    @if ($surat->tanggal_penyelesaian == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    <strong>{{ date('d-m-Y h:i:s', strtotime($surat->tanggal_penyelesaian)) }}</strong></td>
+                                                    @endif
                                             </tr>
                                         </table>
                                     </div>

@@ -126,41 +126,45 @@
       $('#filter_modal').modal('show');
     }
 
+    function show_jabatan(param){
+        $('[name="karyawan_id"]').removeAttr('disabled');
+        $.ajax({
+            url: "/api/karyawan?jabatan_bidang_id=" + param.jabatan_bidang_id,
+            method: "GET",
+            async: true,
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+                console.log(param.karyawan_id);
+                var html = '';
+                var i;
+                for(i=0; i<data.length; i++){
+                    html += '<option value='+data[i].id+'>'+data[i].nama+'</option>';
+                }
+                $('#karyawan_id').html(html);
+                $('#karyawan_id').selectpicker('refresh');
+                $('#karyawan_id').selectpicker('val', param.karyawan_id);
+
+            }
+        })
+    }
+
     function save(){
-        $('#jabatan_bidang_id').html("");
-        $('#karyawan_id').html("");
-        $('#isi_disposisi').html("");
-        $('#tindakan_kadin').html("");
-        $('#catatan_kadin').html("");
         $.ajax({
             url : "{{ route('admin3.suratmasukadmin3.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
             success: function(data){
+                console.log(data);
                 if(data.status) {
                     $('#modal-form').modal('hide');
                     reload_table();
                     sukses();
                 }else{
-                    if(data.errors.tindakan){
-                        $('#tindakan').text(data.errors.tindakan[0]);
-                    }
-                    if(data.errors.jabatan_bidang_id){
-                        $('#jabatan_bidang_id').text(data.errors.jabatan_bidang_id[0]);
-                    }
-                    if(data.errors.karyawan_id){
-                        $('#karyawan_id').text(data.errors.karyawan_id[0]);
-                    }
-                    if(data.errors.isi_disposisi){
-                        $('#isi_disposisi').text(data.errors.isi_disposisi[0]);
-                    }
-                    if(data.errors.tindakan_kadin){
-                        $('#tindakan_kadin').text(data.errors.tindakan_kadin[0]);
-                    }
-                    if(data.errors.catatan_kadin){
-                        $('#catatan_kadin').text(data.errors.catatan_kadin[0]);
-                    }
+                    $('#modal-form').modal('hide');
+                    reload_table();
+                    sukses();
                 }
             },
             error: function (jqXHR, textStatus , errorThrown){ 
@@ -265,5 +269,29 @@
       })
     }
 
+</script>
+<script>
+    $('#jabatan_bidang_id').change(function() {
+        var id = $(this).val();
+        
+        $.ajax({
+            url: "/api/karyawan?jabatan_bidang_id=" + id,
+            method: "GET",
+            async: true,
+            dataType: 'json',
+            success: function(data) {
+                document.getElementById("karyawan_id").disabled = false;
+                var html = '';
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    html += '<option value=' + data[i].id + '>' + data[i].nama + '</option>';
+                }
+                $('#karyawan_id').html(html).selectpicker('refresh');
+            }
+        });
+
+
+        return false;
+    });
 </script>
 @endsection

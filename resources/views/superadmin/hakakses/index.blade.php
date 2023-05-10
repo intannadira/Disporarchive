@@ -29,10 +29,7 @@
                             <div class="col-md-6 col-12">
                                 <h4 class="header-title">Daftar Pengguna</h4>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <button type="button" onclick="add()"
-                                    class="btn btn-rounded btn-outline-info float-right mb-3"><i class="ti-plus"> </i>
-                                    Tambah</button>                            
+                            <div class="col-md-6 col-12">                          
                                 <button type="hidden" onclick="reload_table()"
                                 class="btn btn-rounded btn-outline-secondary float-right mb-3 mr-1"><i
                                     class="ti-reload"> </i> Reload</button>
@@ -60,6 +57,7 @@
         </div>
     </div>
 </div>
+@include('superadmin.hakakses.modal')
 
 <!-- main content area end -->
 @endsection
@@ -127,10 +125,11 @@
     }
 
     function save(){
-        $('#nama').html("");
-        $('#jabatan_bidang_id').html("");
+        $('#name').html("");
+        $('#email').html("");
+        $('#jabatan_id').html("");
         $.ajax({
-            url : "{{ route('superadmin.karyawan.store')}}",
+            url : "{{ route('superadmin.hakakses.store')}}",
             type: "POST",
             data: $('#form').serialize(),
             dataType: "JSON",
@@ -140,11 +139,14 @@
                     reload_table();
                     sukses();
                 }else{
-                    if(data.errors.nama){
-                        $('#nama').text(data.errors.nama[0]);
+                    if(data.errors.name){
+                        $('#name').text(data.errors.name[0]);
                     }
-                    if(data.errors.jabatan_bidang_id){
-                        $('#jabatan_bidang_id').text(data.errors.jabatan_bidang_id[0]);
+                    if(data.errors.email){
+                        $('#email').text(data.errors.email[0]);
+                    }
+                    if(data.errors.jabatan_id){
+                        $('#jabatan_id').text(data.errors.jabatan_id[0]);
                     }
                 }
             },
@@ -172,20 +174,22 @@
     }
 
     function edit(id){
-        $('#form')[0].reset(); // reset form on modals
-        $('#nama').html("");
-        $('#jabatan_bidang_id').html("");
+        $('#name').html("");
+        $('#email').html("");
+        $('#jabatan_id').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/karyawan/" + id,
+            url : "/superadmin/hakakses/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
+                console.log(data);
                 $('[name="id"]').val(data.id);
-                $('[name="nama"]').val(data.nama);
-                $('[name="jabatan_bidang_id"]').val(data.jabatan_bidang_id);
+                $('[name="name"]').val(data.name);
+                $('[name="email"]').val(data.email);
+                $('[name="jabatan_id"]').val(data.jabatan_id);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit Data Karyawan'); // Set title to Bootstrap modal title   
+                $('.modal-title').text('Edit Data Pengguna'); // Set title to Bootstrap modal title   
             },
             error: function (jqXHR, textStatus , errorThrown) {
                 alert(errorThrown);
@@ -211,7 +215,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/karyawan/" + id,
+            url : "/superadmin/hakakses/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

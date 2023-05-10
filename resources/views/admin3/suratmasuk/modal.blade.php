@@ -7,6 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form id="form">
+                @csrf
                 <div class="modal-body">
                     <div class="form-row">
                         <input type="hidden" name="id">
@@ -79,25 +80,23 @@
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Jabatan</label>
-                            <select name="jabatan_bidang_id" class="form-control selectpicker"
-                                data-live-search="true">
+                            <select name="jabatan_bidang_id" id="jabatan_bidang_id" 
+                            class="form-control selectpicker" data-dropup-auto="false" data-live-search="true" data-size="5"
+                            required>
                                 <option selected disabled>--Pilih Jabatan--</option>
                                 @foreach ($jabatan as $jabatan)
                                 <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan_bidang }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger">
-                                <strong id="jabatan_bidang_id"></strong>
+                                <strong id="jabatan_bidang"></strong>
                             </span>
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Karyawan</label>
-                            <select name="karyawan_id" class="form-control selectpicker"
-                                data-live-search="true">
+                            <select name="karyawan_id" id="karyawan_id" class="form-control"
+                            data-dropup-auto="false" data-live-search="true" data-size="5" disabled required>
                                 <option selected disabled>--Pilih Karyawan--</option>
-                                @foreach ($karyawan as $karyawan)
-                                <option value="{{ $karyawan->id }}">{{ $karyawan->nama }}</option>
-                                @endforeach
                             </select>
                             <span class="text-danger">
                                 <strong id="karyawan_id"></strong>
@@ -105,7 +104,7 @@
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Isi Disposisi</label>
-                            <textarea name="isi_disposisi" class="form-control" rows="5" placeholder="Masukan Isi Disposisi"></textarea>
+                            <textarea name="isi_disposisi" class="form-control" rows="5" placeholder="Masukan Isi Disposisi" required></textarea>
                             <span class="text-danger">
                                 <strong id="isi_disposisi"></strong>
                             </span>

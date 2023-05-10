@@ -77,22 +77,17 @@
                         <div class="col-md-12 col-12 mb-3">
                             <hr>
                         </div>
+                        <div class="col-md-3 col-12 mb-3">
+                        </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label>Konfirmasi Selesai</label>
-                            <select class="form-control" name="tindakan">
+                            <select class="form-control selectpicker" name="tindakan">
                                 <option value="">-- Pilih Konfirmasi Surat --</option>
                                 <option value="selesai">Terselesaikan</option>
                                 <option value="belum-selesai">Belum Selesai</option>
                             </select>
                             <span class="text-danger">
                                 <strong id="tindakan"></strong>
-                            </span>
-                        </div>
-                        <div class="col-md-6 col-12 mb-3">
-                            <label>Lampiran</label>
-                            <input type="file" class="form-control" name="lampiran" placeholder="Masukan Lampiran">
-                            <span class="text-danger">
-                                <strong id="lampiran"></strong>
                             </span>
                         </div>
                     </div>

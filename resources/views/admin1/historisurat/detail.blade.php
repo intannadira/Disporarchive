@@ -139,7 +139,12 @@
                                             <tr>
                                                 <td>Tanggal Penyelesaian</td>
                                                 <td>:</td>
-                                                <td><strong>{{ date('d-m-Y h:i:s', strtotime($surat->tanggal_penyelesaian)) }}</strong></td>
+                                                <td>
+                                                    @if ($surat->tanggal_penyelesaian == null)
+                                                    <span>-</span>
+                                                    @else
+                                                    <strong>{{ date('d-m-Y h:i:s', strtotime($surat->tanggal_penyelesaian)) }}</strong></td>
+                                                    @endif
                                             </tr>
                                         </table>
                                     </div>

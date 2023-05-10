@@ -11,8 +11,8 @@
                                 <a href="javascript:void(0)"><i class="ti-dashboard"></i><span>Master Data</span></a>
                                 <ul class="submenu">
                                     <li><a href="{{ route('superadmin.hakakses.index')}}"><i class="ti-user"></i> <span>Pengguna</span></a></li>
-                                    <li><a href="{{ route('superadmin.jabatan.index')}}"><i class="ti-user"></i> <span>Jabatan</span></a></li>
-                                    <li><a href="{{ route('superadmin.karyawan.index')}}"><i class="ti-user"></i> <span>Staff</span></a></li>
+                                    <li><a href="{{ route('superadmin.jabatan.index')}}"><i class="ti-medall"></i> <span>Jabatan</span></a></li>
+                                    <li><a href="{{ route('superadmin.karyawan.index')}}"><i class="ti-stamp"></i> <span>Staff</span></a></li>
                                 </ul>
                             </li>   
                             <li><a href="{{ route('superadmin.suratmasuk.index')}}"><i class="ti-share"></i> <span>Surat Masuk</span></a></li>

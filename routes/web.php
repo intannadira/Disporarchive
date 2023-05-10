@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\Api\JabatanController;
 use App\Http\Controllers\User1\HomeUser1Controller;
 use App\Http\Controllers\User2\HomeUser2Controller;
 use App\Http\Controllers\User3\HomeUser3Controller;
@@ -15,10 +16,34 @@ use App\Http\Controllers\User6\HomeUser6Controller;
 use App\Http\Controllers\User7\HomeUser7Controller;
 use App\Http\Controllers\User8\HomeUser8Controller;
 use App\Http\Controllers\User9\HomeUser9Controller;
+use App\Http\Controllers\Admin1\HomeAdmin1Controller;
+use App\Http\Controllers\Admin2\HomeAdmin2Controller;
+use App\Http\Controllers\Admin3\HomeAdmin3Controller;
 use App\Http\Controllers\User10\HomeUser10Controller;
 use App\Http\Controllers\User11\HomeUser11Controller;
 use App\Http\Controllers\User12\HomeUser12Controller;
+use App\Http\Controllers\SuperAdmin\HakAksesController;
+use App\Http\Controllers\SuperAdmin\KaryawanController;
+use App\Http\Controllers\SuperAdmin\SuratMasukController;
+use App\Http\Controllers\User2\SuratMasukUser2Controller;
+use App\Http\Controllers\User3\SuratMasukUser3Controller;
+use App\Http\Controllers\User4\SuratMasukUser4Controller;
+use App\Http\Controllers\User5\SuratMasukUser5Controller;
+use App\Http\Controllers\User6\SuratMasukUser6Controller;
+
+use App\Http\Controllers\User7\SuratMasukUser7Controller;
+use App\Http\Controllers\User8\SuratMasukUser8Controller;
+use App\Http\Controllers\User9\SuratMasukUser9Controller;
+use App\Http\Controllers\SuperAdmin\SuratKeluarController;
+use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
+use App\Http\Controllers\Admin2\SuratMasukAdmin2Controller;
+use App\Http\Controllers\Admin3\SuratMasukAdmin3Controller;
+use App\Http\Controllers\SuperAdmin\HistoriSuratController;
+use App\Http\Controllers\User10\SuratMasukUser10Controller;
+use App\Http\Controllers\User11\SuratMasukUser11Controller;
+use App\Http\Controllers\User12\SuratMasukUser12Controller;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
+use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\User1\DisposisiSayaUser1Controller;
 use App\Http\Controllers\User2\DisposisiSayaUser2Controller;
 use App\Http\Controllers\User3\DisposisiSayaUser3Controller;
@@ -28,39 +53,15 @@ use App\Http\Controllers\User6\DisposisiSayaUser6Controller;
 use App\Http\Controllers\User7\DisposisiSayaUser7Controller;
 use App\Http\Controllers\User8\DisposisiSayaUser8Controller;
 use App\Http\Controllers\User9\DisposisiSayaUser9Controller;
-use App\Http\Controllers\User10\DisposisiSayaUser10Controller;
-use App\Http\Controllers\User11\DisposisiSayaUser11Controller;
 
-use App\Http\Controllers\User2\SuratMasukUser2Controller;
-use App\Http\Controllers\User3\SuratMasukUser3Controller;
-use App\Http\Controllers\User4\SuratMasukUser4Controller;
-use App\Http\Controllers\User5\SuratMasukUser5Controller;
-use App\Http\Controllers\User6\SuratMasukUser6Controller;
-use App\Http\Controllers\User7\SuratMasukUser7Controller;
-use App\Http\Controllers\User8\SuratMasukUser8Controller;
-use App\Http\Controllers\User9\SuratMasukUser9Controller;
-use App\Http\Controllers\User10\SuratMasukUser10Controller;
-use App\Http\Controllers\User11\SuratMasukUser11Controller;
-use App\Http\Controllers\User12\SuratMasukUser12Controller;
-use App\Http\Controllers\Admin1\SuratMasukAdmin1Controller;
-use App\Http\Controllers\Admin2\SuratMasukAdmin2Controller;
-use App\Http\Controllers\Admin3\SuratMasukAdmin3Controller;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
 use App\Http\Controllers\Admin2\HistoriSuratAdmin2Controller;
 use App\Http\Controllers\Admin3\HistoriSuratAdmin3Controller;
+use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
 use App\Http\Controllers\Admin1\DisposisiSayaAdmin1Controller;
 use App\Http\Controllers\Admin2\DisposisiSayaAdmin2Controller;
-use App\Http\Controllers\Admin1\HomeAdmin1Controller;
-use App\Http\Controllers\Admin2\HomeAdmin2Controller;
-use App\Http\Controllers\Admin3\HomeAdmin3Controller;
-
-use App\Http\Controllers\SuperAdmin\JabatanBidangController;
-use App\Http\Controllers\SuperAdmin\HomeSuperAdminController;
-use App\Http\Controllers\SuperAdmin\HistoriSuratController;
-use App\Http\Controllers\SuperAdmin\SuratKeluarController;
-use App\Http\Controllers\SuperAdmin\HakAksesController;
-use App\Http\Controllers\SuperAdmin\KaryawanController;
-use App\Http\Controllers\SuperAdmin\SuratMasukController;
+use App\Http\Controllers\User10\DisposisiSayaUser10Controller;
+use App\Http\Controllers\User11\DisposisiSayaUser11Controller;
 
 
 
@@ -152,6 +153,16 @@ Route::group([
         });
 
     });
+
+    // route group prefix api
+    Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+        // Route get jabatan
+        Route::get('jabatan', [JabatanController::class, 'getJabatan'])->name('jabatan');
+        // Route get karyawan
+        Route::get('karyawan', [JabatanController::class, 'getKaryawan'])->name('karyawan');
+    
+    });
+
 
     //role admin1
     Route::group([
