@@ -55,6 +55,7 @@ class KaryawanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama'                => 'required',
+            'no_wa'               => 'required',
             'jabatan_bidang_id'   => 'required',
         ]);
 
@@ -67,6 +68,7 @@ class KaryawanController extends Controller
             Karyawan::find($request->id)->update(
                 [
                     'nama'                     => $request->nama,
+                    'no_wa'                    => $request->no_wa,
                     'jabatan_bidang_id'        => $request->jabatan_bidang_id,
                 ]
             );
@@ -75,6 +77,7 @@ class KaryawanController extends Controller
             Karyawan::Create(
                 [
                     'nama'                     => $request->nama,
+                    'no_wa'                    => $request->no_wa,
                     'jabatan_bidang_id'        => $request->jabatan_bidang_id,
                 ]
             );

@@ -43,6 +43,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
+                                    <th>No Telp</th>
                                     <th>Jabatan</th>
                                     <th>Action</th>
                                 </tr>
@@ -97,6 +98,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex' , orderable: false, searchable: false},
                 {data: 'nama', name: 'nama'},
+                {data: 'no_wa', name: 'no_wa'},
                 {data: 'jabatan_bidang.nama_jabatan_bidang', name: 'jabatan_bidang.nama_jabatan_bidang'},   
                 {data: 'action', name: 'action'},
             ],
@@ -114,6 +116,7 @@
     function add(){
       $('#form')[0].reset(); // reset form on modals
       $('#nama').html("");
+      $('#no_wa').html("");
       $('#jabatan_bidang_id').html("");
       $('#modal-form').modal('show'); // show bootstrap modal
       $('.modal-title').text('Tambah Data Jabatan'); // Set Title to Bootstrap modal title
@@ -139,6 +142,9 @@
                 }else{
                     if(data.errors.nama){
                         $('#nama').text(data.errors.nama[0]);
+                    }
+                    if(data.errors.no_wa){
+                        $('#no_wa').text(data.errors.no_wa[0]);
                     }
                     if(data.errors.jabatan_bidang_id){
                         $('#jabatan_bidang_id').text(data.errors.jabatan_bidang_id[0]);
@@ -171,6 +177,7 @@
     function edit(id){
         $('#form')[0].reset(); // reset form on modals
         $('#nama').html("");
+        $('#no_wa').html("");
         $('#jabatan_bidang_id').html("");
         //Ajax Load data from ajax
         $.ajax({
@@ -180,6 +187,7 @@
             success: function(data) {
                 $('[name="id"]').val(data.id);
                 $('[name="nama"]').val(data.nama);
+                $('[name="no_wa"]').val(data.no_wa);
                 $('[name="jabatan_bidang_id"]').val(data.jabatan_bidang_id);
                 $('#modal-form').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Edit Data Karyawan'); // Set title to Bootstrap modal title   

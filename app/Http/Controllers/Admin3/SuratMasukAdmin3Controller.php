@@ -65,7 +65,7 @@ class SuratMasukAdmin3Controller extends Controller
         $karyawan = Karyawan::select('id', 'nama')->get();
 
         return view('admin3.suratmasuk.index', [
-            'title'     => 'Surat Masuk',
+                'title'     => 'Surat Masuk',
                 'jabatan'   => $jabatan,
                 'karyawan'  => $karyawan
         ]);
@@ -140,6 +140,7 @@ class SuratMasukAdmin3Controller extends Controller
         }
 
         return response()->json(['status' => true]);
+  
     }
 
     /**

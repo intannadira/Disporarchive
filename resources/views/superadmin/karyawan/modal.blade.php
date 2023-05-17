@@ -18,6 +18,13 @@
                             </span>
                         </div>
                         <div class="col-md-12 col-12 mb-3">
+                            <label>No Telp</label>
+                            <input class="form-control" type="number" name="no_wa" placeholder="Masukan No WhatsApp 628-">
+                            <span class="text-danger">
+                                <strong id="no_wa"></strong>
+                            </span>
+                        </div>
+                        <div class="col-md-12 col-12 mb-3">
                             <label>Jabatan</label>
                             <select name="jabatan_bidang_id" class="form-control selectpicker"
                                 data-live-search="true">

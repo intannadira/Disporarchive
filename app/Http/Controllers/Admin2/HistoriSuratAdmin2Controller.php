@@ -17,7 +17,7 @@ class HistoriSuratAdmin2Controller extends Controller
     {
         //datatable
         if (request()->ajax()) {
-            $data = SuratMasuk::with('jabatan_bidang')
+            $data = SuratMasuk::with(['jabatan_bidang', 'karyawan'])
             ->whereIn('status',['diverifikasi-sekdin','selesai','didisposisi'])
             ->get();
 
@@ -50,10 +50,29 @@ class HistoriSuratAdmin2Controller extends Controller
                     return $tanggal_terima;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
-                            <center>
-                            <a href="histori-suratadmin2/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
-                            </center>';
+                    if($row->status == 'diverifikasi-sekdin'){
+                        $actionBtn = '
+                        <center>
+                        <a href="https://api.whatsapp.com/send/?phone=6285726125606&text=*Selamat Anda Mendapatkan Notifikasi Surat dengan* :
+%0ANo : '. $row->no_surat.'%0A
+Dari : '. $row->dari_instansi .'%0A
+Tanggal Surat : '. date('d-m-Y', strtotime($row->tanggal_surat)) .'%0A
+Tanggal Terima : '. date('d-m-Y', strtotime($row->tanggal_terima)) .'%0A
+No Agenda : '. $row->no_urut .'%0A
+Perihal : '. $row->perihal .'%0A
+Kategori Surat : '. $row->kategori_surat .'%0A
+%0A
+*Silahkan Melakukan Konfirmasi dengan Klik Link ini http://disporarchive.com dan pilih Menu Surat Masuk untuk Melihat Detail Surat.*
+                                                    " target="_blank" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Maps"><i class="ti-announcement"></i>  Kirim WA</a>
+                        <a href="histori-suratadmin2/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
+                        </center>';
+                    }else{
+                        $actionBtn = '
+                        <center>
+                        <a href="histori-suratadmin2/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"> Detail</i></a>
+                        </center>';
+                    }
+                    
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'h_status', 'h_tanggal_terima'])
