@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 10/05/2023 15:18:07
+ Date: 17/05/2023 16:25:27
 */
 
 SET NAMES utf8mb4;
@@ -47,7 +47,7 @@ CREATE TABLE `jabatan_bidang`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jabatan_bidang
@@ -75,17 +75,19 @@ DROP TABLE IF EXISTS `karyawan`;
 CREATE TABLE `karyawan`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_wa` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `jabatan_bidang_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of karyawan
 -- ----------------------------
-INSERT INTO `karyawan` VALUES (1, 'Susi', 1, '2023-04-26 21:57:30', '2023-04-30 20:24:20');
-INSERT INTO `karyawan` VALUES (2, 'Budi', 2, '2023-04-26 21:58:26', '2023-04-26 21:58:26');
+INSERT INTO `karyawan` VALUES (1, 'Susi', '628895720904', 1, '2023-04-26 21:57:30', '2023-05-17 15:21:46');
+INSERT INTO `karyawan` VALUES (2, 'Budi', '6285726125606', 2, '2023-04-26 21:58:26', '2023-04-26 21:58:26');
+INSERT INTO `karyawan` VALUES (3, 'Sukardi', '6285726125606', 3, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -209,8 +211,7 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('KYhKuUP0Y4M2OM8JTnTV42Ocj67X2GfAYzpq1OAl', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicFNwSjlFelc2TUI5Q1d1UDJCcmh5WDdjdE9aaFluUG9PbENsaTF5UyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc3VwZXJhZG1pbi9zdXJhdG1hc3VrIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6OTt9', 1683706667);
-INSERT INTO `sessions` VALUES ('xtVqfCF3PaIoQ7YGi46zKPdanLEi1JQcQADsSFzX', 15, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoienhnenBPSWhxR3hpa1BLUDFJVElUUXJoSmxzcjJvS3pzM215eEFFTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyMy9kaXNwb3Npc2lzYXlhdXNlcjMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTU7fQ==', 1683035092);
+INSERT INTO `sessions` VALUES ('9CGhOSUcCNfzt4v7N4b0T5kqltHs8chMxl2h37UB', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia1VxSW9XY3FPcmlqT2V5UHh1VlhucnVFR3doRTNlUWlldVhLTEpWTSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc3VwZXJhZG1pbi9rYXJ5YXdhbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7fQ==', 1684311902);
 
 -- ----------------------------
 -- Table structure for surat_keluar
@@ -266,7 +267,7 @@ CREATE TABLE `surat_masuk`  (
 -- Records of surat_masuk
 -- ----------------------------
 INSERT INTO `surat_masuk` VALUES (1, '001', 'Sekda Surakarta', 'KP11/539/2023', 'Rapat Umum 2023', '2023-04-27', '2023-04-26', 'Sekretaris Dispora', 'sangat-segera', 'segera ditindaklanjuti', 'selesai', NULL, 'diajukan', 1, 2, 'selesaikan', 'Menghadap saya dan koordinasi', '2023-04-28 16:08:41', '2023-04-27 14:45:27', '2023-04-30 00:15:54');
-INSERT INTO `surat_masuk` VALUES (2, '002', 'DPRD Surakarta', 'KP/DPR/2023', 'Rapat Bundar', '2023-04-28', '2023-04-29', 'Kepala Dinas', 'segera', 'Hadiri', 'didisposisi', NULL, 'diajukan', 4, 2, 'selesaikan', 'diskusikan ke saya', '2023-04-30 19:25:06', '2023-04-30 19:07:42', '2023-04-30 19:33:25');
+INSERT INTO `surat_masuk` VALUES (2, '002', 'DPRD Surakarta', 'KP/DPR/2023', 'Rapat Bundar', '2023-04-28', '2023-04-29', 'Kepala Dinas', 'segera', 'ssds', 'diverifikasi-sekdin', NULL, 'diajukan', 1, 1, 'selesaikan', 'dsds', '2023-05-17 14:40:40', '2023-04-30 19:07:42', '2023-05-17 15:07:19');
 INSERT INTO `surat_masuk` VALUES (3, '003', 'Dinas Pendidikan', 'KP/23/2023', 'Koordinasi Pendidikan', '2023-05-01', '2023-05-02', 'Kepala Dinas Dispora', 'sangat-segera', 'Laksanakan', 'didisposisi', NULL, 'diajukan', 6, 1, 'selesaikan', 'Diskusikan dulu ke saya', '2023-05-02 20:34:32', '2023-05-02 20:03:26', '2023-05-02 20:34:32');
 INSERT INTO `surat_masuk` VALUES (4, '004', 'Dinas Kependudukan', 'KP/80/2023', 'Rapat Tahunan', '2023-05-01', '2023-05-02', 'Kepala Dinas', 'sangat-segera', NULL, 'diajukan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-02 20:06:38', '2023-05-02 20:06:38');
 
