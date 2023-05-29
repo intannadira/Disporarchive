@@ -19,5 +19,6 @@ class SuratKeluar extends Model
         'tipe_surat',
         'lampiran',
         'deskripsi',
+        'status',
     ];
 }

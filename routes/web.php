@@ -43,6 +43,7 @@ use App\Http\Controllers\User10\SuratMasukUser10Controller;
 use App\Http\Controllers\User11\SuratMasukUser11Controller;
 use App\Http\Controllers\User12\SuratMasukUser12Controller;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
+use App\Http\Controllers\Admin1\SuratKeluarAdmin1Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\User1\DisposisiSayaUser1Controller;
 use App\Http\Controllers\User2\DisposisiSayaUser2Controller;
@@ -52,8 +53,8 @@ use App\Http\Controllers\User5\DisposisiSayaUser5Controller;
 use App\Http\Controllers\User6\DisposisiSayaUser6Controller;
 use App\Http\Controllers\User7\DisposisiSayaUser7Controller;
 use App\Http\Controllers\User8\DisposisiSayaUser8Controller;
-use App\Http\Controllers\User9\DisposisiSayaUser9Controller;
 
+use App\Http\Controllers\User9\DisposisiSayaUser9Controller;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
 use App\Http\Controllers\Admin2\HistoriSuratAdmin2Controller;
 use App\Http\Controllers\Admin3\HistoriSuratAdmin3Controller;
@@ -181,6 +182,9 @@ Route::group([
             //DisposisiSayaadmin1
             Route::resource('disposisisayaadmin1', DisposisiSayaAdmin1Controller::class);
             Route::get('disposisi-sayaadmin1/detail', [DisposisiSayaAdmin1Controller::class, 'detail_surat'])->name('disposisisayaadmin1.detail');
+            //suratkeluar
+            Route::resource('suratkeluaradmin1', SuratKeluarAdmin1Controller::class);
+            Route::get('surat-keluaradmin1/detail', [SuratKeluarAdmin1Controller::class, 'detail_surat'])->name('suratkeluar.detail');
 
         });
 

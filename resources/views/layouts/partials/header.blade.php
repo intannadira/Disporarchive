@@ -24,6 +24,7 @@
                         @if ( auth()->user()->jabatan_id == '2')
                             <li class="active"><a href="{{ route('admin1.home.index') }}"><i class="ti-bar-chart-alt"></i> <span>Dashboard</span></a></li>
                             <li><a href="{{ route('admin1.suratmasukadmin1.index')}}"><i class="ti-agenda"></i> <span>Surat Masuk</span></a></li>
+                            <li><a href="{{ route('admin1.suratkeluaradmin1.index')}}"><i class="ti-share-alt"></i> <span>Surat Keluar</span></a></li>
                             <li><a href="{{ route('admin1.historisuratadmin1.index')}}"><i class="ti-user"></i> <span>Histori Surat</span></a></li>
                             <li><a href="{{ route('admin1.disposisisayaadmin1.index')}}"><i class="ti-bell"></i> <span>Disposisi Saya</span></a></li>
                         @endif

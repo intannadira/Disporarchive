@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\Admin1;
 
 use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class SuratKeluarController extends Controller
+class SuratKeluarAdmin1Controller extends Controller
 {
     public function index()
     {
@@ -57,7 +57,7 @@ class SuratKeluarController extends Controller
 
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
-        return view('superadmin.suratkeluar.index', [
+        return view('admin1.suratkeluar.index', [
             'title'     => 'Surat Keluar',
             'jabatan'   => $jabatan
         ]);
@@ -68,7 +68,7 @@ class SuratKeluarController extends Controller
         $kode = $request->get('kode');
         $surat = SuratKeluar::where('id', $kode)->first();
 
-        return view('superadmin.suratkeluar.detail', [
+        return view('admin1.suratkeluar.detail', [
             'title' => 'Detail Surat Keluar',
             'surat' => $surat
         ]);
@@ -88,39 +88,32 @@ class SuratKeluarController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'perihal'             => 'required',
-            'tanggal_surat'       => 'required',
-            'tujuan_surat'        => 'required',
-            'tipe_surat'          => 'required',
-            'deskripsi'           => 'required',
+            'tindakan'       => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
         }
 
-        //upload file
-        if($request->hasFile('lampiran')){
-            $file = $request->file('lampiran');
-            $file_name = time()."_".$file->getClientOriginalName();
-            $file->move('lampiran',$file_name);
-        }else{
-            $file_name = null;
-        }
-
         if ($request->id) {
 
+           //if request tindakan diajukan 
+           if ($request->tindakan == 'diajukan') {
             SuratKeluar::find($request->id)->update(
-                [
-                    'no_surat'                => $request->no_surat,
-                    'perihal'                 => $request->perihal,
-                    'tanggal_surat'           => $request->tanggal_surat,
-                    'tujuan_surat'            => $request->tujuan_surat,
-                    'tipe_surat'              => $request->tipe_surat,
-                    'lampiran'                => $file_name,
-                    'deskripsi'               => $request->deskripsi,
-                ]
-            );
+                    [
+                        'tindakan'                    => $request->tindakan,
+                        'status'                      => 'diverifikasi-kasubag',
+                    ]
+                );
+            }else{
+                SuratKeluar::find($request->id)->update(
+                    [
+                        'tindakan'                    => $request->tindakan,
+                        'status'                      => 'ditolak',
+                    ]
+                );
+            }
+
         } else {
 
             SuratKeluar::Create(
@@ -130,7 +123,6 @@ class SuratKeluarController extends Controller
                     'tanggal_surat'           => $request->tanggal_surat,
                     'tujuan_surat'            => $request->tujuan_surat,
                     'tipe_surat'              => $request->tipe_surat,
-                    'lampiran'                => $file_name,
                     'deskripsi'               => $request->deskripsi,
                     'status'                  => 'diajukan'
                 ]

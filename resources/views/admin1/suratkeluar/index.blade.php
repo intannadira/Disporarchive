@@ -62,7 +62,7 @@
         </div>
     </div>
 </div>
-@include('superadmin.suratkeluar.modal')
+@include('admin1.suratkeluar.modal')
 
 <!-- main content area end -->
 @endsection
@@ -95,7 +95,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('superadmin.suratkeluar.index')}}',
+                  url: '{{ route('admin1.suratkeluaradmin1.index')}}',
                   type: "GET",
             },
             columns: [
@@ -147,7 +147,7 @@
         $('#lampiran').html("");
         $('#deskripsi').html("");
         $.ajax({
-            url : "{{ route('superadmin.suratkeluar.store')}}",
+            url : "{{ route('admin1.suratkeluaradmin1.store')}}",
             type: "POST",
             data: formData,
             processData: false,
@@ -209,7 +209,7 @@
         $('#deskripsi').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/suratkeluar/" + id,
+            url : "/admin1/suratkeluaradmin1/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -247,7 +247,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/suratkeluar/" + id,
+            url : "/admin1/suratkeluaradmin1/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){

@@ -17,8 +17,8 @@ class HistoriSuratController extends Controller
     {
         //datatable
         if (request()->ajax()) {
-            $data = SuratMasuk::with('jabatan_bidang')
-            // ->where('status','didisposisi')
+            $data = SuratMasuk::with(['jabatan_bidang', 'karyawan'])
+            ->whereIN('status', ['didisposisi', 'dilaksanakan', 'selesai'])
             ->get();
 
             return Datatables::of($data)

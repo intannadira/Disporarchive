@@ -44,6 +44,7 @@
                                     <th>Status</th>
                                     <th>Instansi</th>
                                     <th>Perihal</th>
+                                    <th>Didisposisikan Kpd</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -101,6 +102,7 @@
                 {data: 'h_status', name: 'h_status'},
                 {data: 'dari_instansi', name: 'dari_instansi'},
                 {data: 'perihal', name: 'perihal'},
+                {data: 'karyawan.nama', name: 'karyawan.nama'},
                 {data: 'action', name: 'action'},
             ],
         });
