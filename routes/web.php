@@ -44,6 +44,8 @@ use App\Http\Controllers\User11\SuratMasukUser11Controller;
 use App\Http\Controllers\User12\SuratMasukUser12Controller;
 use App\Http\Controllers\User1\HistoriSuratUser1Controller;
 use App\Http\Controllers\Admin1\SuratKeluarAdmin1Controller;
+use App\Http\Controllers\Admin2\SuratKeluarAdmin2Controller;
+use App\Http\Controllers\Admin3\SuratKeluarAdmin3Controller;
 use App\Http\Controllers\SuperAdmin\JabatanBidangController;
 use App\Http\Controllers\User1\DisposisiSayaUser1Controller;
 use App\Http\Controllers\User2\DisposisiSayaUser2Controller;
@@ -51,9 +53,9 @@ use App\Http\Controllers\User3\DisposisiSayaUser3Controller;
 use App\Http\Controllers\User4\DisposisiSayaUser4Controller;
 use App\Http\Controllers\User5\DisposisiSayaUser5Controller;
 use App\Http\Controllers\User6\DisposisiSayaUser6Controller;
+
 use App\Http\Controllers\User7\DisposisiSayaUser7Controller;
 use App\Http\Controllers\User8\DisposisiSayaUser8Controller;
-
 use App\Http\Controllers\User9\DisposisiSayaUser9Controller;
 use App\Http\Controllers\Admin1\HistoriSuratAdmin1Controller;
 use App\Http\Controllers\Admin2\HistoriSuratAdmin2Controller;
@@ -206,6 +208,9 @@ Route::group([
             //DisposisiSayaadmin2
             Route::resource('disposisisayaadmin2', DisposisiSayaAdmin2Controller::class);
             Route::get('disposisi-sayaadmin2/detail', [DisposisiSayaAdmin2Controller::class, 'detail_surat'])->name('disposisisayaadmin2.detail');
+            //suratkeluar
+            Route::resource('suratkeluaradmin2', SuratKeluarAdmin2Controller::class);
+            Route::get('surat-keluaradmin2/detail', [SuratKeluarAdmin2Controller::class, 'detail_surat'])->name('suratkeluar.detail');
         });
 
     });
@@ -223,6 +228,9 @@ Route::group([
             //HistoriSuratMasukAdmin3
             Route::resource('historisuratadmin3', HistoriSuratAdmin3Controller::class);
             Route::get('histori-suratadmin3/detail', [HistoriSuratAdmin3Controller::class, 'detail_surat'])->name('historisuratadmin3.detail');
+             //suratkeluar
+             Route::resource('suratkeluaradmin3', SuratKeluarAdmin3Controller::class);
+             Route::get('surat-keluaradmin3/detail', [SuratKeluarAdmin3Controller::class, 'detail_surat'])->name('suratkeluar.detail');
         });
 
     });

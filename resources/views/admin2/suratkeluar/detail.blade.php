@@ -65,7 +65,7 @@
                                                     @if ($surat->status == 'diajukan')
                                                     <span class="badge badge-primary">{{ $surat->status }}</span>
                                                     @else
-                                                    <span class="badge badge-success">{{ $surat->status }}</span>
+                                                    <span class="badge badge-warning">{{ $surat->status }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -74,59 +74,26 @@
                                     <br>
                                 </div>
                             </div>
-                            <div class="col-md-5 col-12 mb-3">
-                            </div>
-                            <center><h6>TTD :</h6></center>
-                            <div class="col-md-12 col-12 mb-3">
-                            </div>
-                            <div class="col-md-3 col-12 mb-3">
-                            </div>
-                            <div class="col-md-12">
-                                <table class="table table-sm table-borderless">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            @if($surat->status == 'selesai')
-                                                <img src="{{ url('ttd.png') }}" />
-                                            @else
-                                            <span class="badge badge-warning">Belum Ada Tanda Tangan, Mintakan Konfirmasi Surat Kepada Kepala Dinas</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="col-md-4">
+                            <hr>
+                            <div class="col-md-5">
                                 <table class="table table-sm table-borderless">
                                     <tr>
                                         <td>Lampiran</td>
                                         <td>:</td>
                                         <td>
-                                            @if ($surat->lampiran == null)
-                                                <span class="badge badge-warning">Tidak Ada Lampiran</span>
-                                            @else
-                                                <a href="{{ url('lampiran/'.$surat->lampiran) }}" target="_blank">
-                                                    <img src="{{ url('lampiran/'.$surat->lampiran) }}" alt="" width="100px">
-                                                </a>
-
-                                                
-                                            @endif
-                                            {{-- <a href="{{ url('lampiran/'.$surat->lampiran) }}"
+                                            <a href="{{ url('lampiran/'.$surat->lampiran) }}"
                                                 target="_blank">
                                                 <img src="{{ url('lampiran/'.$surat->lampiran) }}"
                                                     alt="" width="100px">
-                                            </a> --}}
+                                            </a>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            
-                            
                         </div>
                         <div class="invoice-buttons text-right d-print-none">
                             <a href="#" onclick="window.print();" class="invoice-btn"><i class="ti-printer"></i> Print</a>
-                            <a href="{{ route('superadmin.suratkeluar.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
+                            <a href="{{ route('admin2.suratkeluaradmin2.index')}}" class="invoice-btn"><i class="ti-back-left"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

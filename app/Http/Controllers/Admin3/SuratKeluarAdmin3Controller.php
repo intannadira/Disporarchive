@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin1;
+namespace App\Http\Controllers\Admin3;
 
 use App\Models\SuratKeluar;
 use Illuminate\Http\Request;
@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class SuratKeluarAdmin1Controller extends Controller
+class SuratKeluarAdmin3Controller extends Controller
 {
     public function index()
     {
         //datatable
         if (request()->ajax()) {
-            $data = SuratKeluar::get();
+            $data = SuratKeluar::where('status', '!=','diajukan')
+            ->where('status', '!=', 'diverifikasi-kasubag')
+            ->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -35,7 +37,7 @@ class SuratKeluarAdmin1Controller extends Controller
                         $status     = '<a href="javascript:void(0)" class="badge badge-warning">Diverfikasi Kasub</a>';
                     }
                     if ($data->status == 'diverifikasi-sekdin') {
-                        $status     = '<a href="javascript:void(0)" class="badge badge-secondary">Diverifikasi Sekdin</a>';
+                        $status     = '<a href="javascript:void(0)" class="badge badge-info">Diverifikasi Sekdin</a>';
                     }
                     if ($data->status == 'selesai') {
                         $status     = '<a href="javascript:void(0)" class="badge badge-success">Selesai</a>';
@@ -43,15 +45,15 @@ class SuratKeluarAdmin1Controller extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    if($row->status == 'diverifikasi-kasubag'){
+                    if($row->status == 'selesai'){
                         $actionBtn = '
                             <center>
-                            <a href="surat-keluaradmin1/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
+                            <a href="surat-keluaradmin3/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
                             </center>';
                     }else{
                         $actionBtn = '
                             <center>
-                            <a href="surat-keluaradmin1/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
+                            <a href="surat-keluaradmin3/detail?kode=' . $row->id . '" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Surat"><i class="ti-search"></i></a>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-warning" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit(' . $row->id . ')"><i class="ti-pencil-alt"></i></a>
                             </center>';
                     }
@@ -63,7 +65,7 @@ class SuratKeluarAdmin1Controller extends Controller
 
         $jabatan = JabatanBidang::select('id', 'nama_jabatan_bidang')->get();
 
-        return view('admin1.suratkeluar.index', [
+        return view('admin3.suratkeluar.index', [
             'title'     => 'Surat Keluar',
             'jabatan'   => $jabatan
         ]);
@@ -74,7 +76,7 @@ class SuratKeluarAdmin1Controller extends Controller
         $kode = $request->get('kode');
         $surat = SuratKeluar::where('id', $kode)->first();
 
-        return view('admin1.suratkeluar.detail', [
+        return view('admin3.suratkeluar.detail', [
             'title' => 'Detail Surat Keluar',
             'surat' => $surat
         ]);
@@ -108,7 +110,7 @@ class SuratKeluarAdmin1Controller extends Controller
             SuratKeluar::find($request->id)->update(
                     [
                         'tindakan'                    => $request->tindakan,
-                        'status'                      => 'diverifikasi-kasubag',
+                        'status'                      => 'selesai',
                     ]
                 );
             }else{

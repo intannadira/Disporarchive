@@ -62,8 +62,7 @@
         </div>
     </div>
 </div>
-@include('superadmin.suratkeluar.modal')
-@include('superadmin.suratkeluar.modal-surat')
+@include('admin2.suratkeluar.modal')
 
 <!-- main content area end -->
 @endsection
@@ -96,7 +95,7 @@
             responsive: true,
             lengthMenu: [[50, 100, 200, -1], [50, 100, 200, "All"]],
             ajax: {
-                  url: '{{ route('superadmin.suratkeluar.index')}}',
+                  url: '{{ route('admin2.suratkeluaradmin2.index')}}',
                   type: "GET",
             },
             columns: [
@@ -121,7 +120,7 @@
     }
 
     function add(){
-      $('#form2')[0].reset(); // reset form on modals
+      $('#form')[0].reset(); // reset form on modals
       $('#no_surat').html("");
       $('#perihal').html("");
       $('#tanggal_surat').html("");
@@ -129,58 +128,12 @@
       $('#tipe_surat').html("");
       $('#lampiran').html("");
       $('#deskripsi').html("");
-      $('#modal-form2').modal('show'); // show bootstrap modal
+      $('#modal-form').modal('show'); // show bootstrap modal
       $('.modal-title').text('Tambah Data Surat Keluar'); // Set Title to Bootstrap modal title
     }
 
     function filter_data(){
       $('#filter_modal').modal('show');
-    }
-
-    function save2(){
-        var formData = new FormData($('#form2')[0]);
-        $('#nama').html("");
-        $('#no_surat').html("");
-        $('#perihal').html("");
-        $('#tanggal_surat').html("");
-        $('#tujuan_surat').html("");
-        $('#tipe_surat').html("");
-        $('#lampiran').html("");
-        $('#deskripsi').html("");
-        $.ajax({
-            url : "{{ route('superadmin.suratkeluar.store')}}",
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            dataType: "JSON",
-            success: function(data){
-                if(data.status) {
-                    $('#modal-form2').modal('hide');
-                    reload_table();
-                    sukses();
-                }else{
-                    if(data.errors.perihal){
-                        $('#perihal').text(data.errors.perihal[0]);
-                    }
-                    if(data.errors.tanggal_surat){
-                        $('#tanggal_surat').text(data.errors.tanggal_surat[0]);
-                    }
-                    if(data.errors.tujuan_surat){
-                        $('#tujuan_surat').text(data.errors.tujuan_surat[0]);
-                    }
-                    if(data.errors.tipe_surat){
-                        $('#tipe_surat').text(data.errors.tipe_surat[0]);
-                    }
-                    if(data.errors.deskripsi){
-                        $('#deskripsi').text(data.errors.deskripsi[0]);
-                    }
-                }
-            },
-            error: function (jqXHR, textStatus , errorThrown){ 
-                alert(errorThrown);
-            }
-        });
     }
 
     function save(){
@@ -194,7 +147,7 @@
         $('#lampiran').html("");
         $('#deskripsi').html("");
         $.ajax({
-            url : "{{ route('superadmin.suratkeluar.store')}}",
+            url : "{{ route('admin2.suratkeluaradmin2.store')}}",
             type: "POST",
             data: formData,
             processData: false,
@@ -256,11 +209,10 @@
         $('#deskripsi').html("");
         //Ajax Load data from ajax
         $.ajax({
-            url : "/superadmin/suratkeluar/" + id,
+            url : "/admin2/suratkeluaradmin2/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
-                console.log(data);
                 $('[name="id"]').val(data.id);
                 $('[name="no_surat"]').val(data.no_surat);
                 $('[name="perihal"]').val(data.perihal);
@@ -295,7 +247,7 @@
       }).then((result) => {
         if (result.value) {
           $.ajax({
-            url : "/superadmin/suratkeluar/" + id,
+            url : "/admin2/suratkeluaradmin2/" + id,
             type: "DELETE",
             dataType: "JSON",
             success: function(data){
