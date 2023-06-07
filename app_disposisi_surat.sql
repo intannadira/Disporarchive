@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 17/05/2023 16:25:27
+ Date: 07/06/2023 15:00:55
 */
 
 SET NAMES utf8mb4;
@@ -80,7 +80,7 @@ CREATE TABLE `karyawan`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of karyawan
@@ -211,7 +211,8 @@ CREATE TABLE `sessions`  (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('9CGhOSUcCNfzt4v7N4b0T5kqltHs8chMxl2h37UB', 9, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoia1VxSW9XY3FPcmlqT2V5UHh1VlhucnVFR3doRTNlUWlldVhLTEpWTSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc3VwZXJhZG1pbi9rYXJ5YXdhbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7fQ==', 1684311902);
+INSERT INTO `sessions` VALUES ('CHkR6Ia9ZuMLzvhBhihlbS3QD8AuyNeXHU51iHMb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVmJNNkM5SEtTcUg2UmVXdTd6NGRianlFRGdzMEdCbnVscjhIbnlEcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zdXBlcmFkbWluL2hvbWUiO319', 1685941570);
+INSERT INTO `sessions` VALUES ('g3UyfodYIEg55v6SA7B3TlEZUnvO7aUSsj6sWy9q', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOElzdEhZd2hpSjRwNzV5ZXR4NWpoSG1iZnkyVnFSZkFyTVFyTFIxeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zdXBlcmFkbWluL2hvbWUiO319', 1685941669);
 
 -- ----------------------------
 -- Table structure for surat_keluar
@@ -219,21 +220,26 @@ INSERT INTO `sessions` VALUES ('9CGhOSUcCNfzt4v7N4b0T5kqltHs8chMxl2h37UB', 9, '1
 DROP TABLE IF EXISTS `surat_keluar`;
 CREATE TABLE `surat_keluar`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `perihal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_surat` timestamp NOT NULL,
+  `tanggal_surat` date NOT NULL,
   `tujuan_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `lampiran` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `tipe_surat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `status` enum('diajukan','ditolak','diverifikasi-kasubag','diverifikasi-sekdin','selesai') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tindakan` enum('revisi','diajukan') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `deskripsi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of surat_keluar
 -- ----------------------------
+INSERT INTO `surat_keluar` VALUES (1, '23ss', 'as', '2023-05-31', 'sasa', NULL, 'sas', 'selesai', NULL, 'sas', '2023-05-29 15:36:24', '2023-05-31 11:26:35');
+INSERT INTO `surat_keluar` VALUES (2, NULL, 'rapat', '2023-05-29', 'rapat orikas', NULL, 'segera', 'diajukan', NULL, 'berkas dibawa komplit', '2023-05-29 15:37:10', '2023-05-29 15:37:29');
+INSERT INTO `surat_keluar` VALUES (3, '', 'sds', '2023-05-31', 'dsd', NULL, 'dsd', 'diajukan', NULL, 'dsd', '2023-05-31 11:22:03', '2023-05-31 11:22:17');
 
 -- ----------------------------
 -- Table structure for surat_masuk
