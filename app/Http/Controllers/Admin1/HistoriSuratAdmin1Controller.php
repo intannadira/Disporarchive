@@ -16,6 +16,7 @@ class HistoriSuratAdmin1Controller extends Controller
     public function index()
     {
         //datatable
+        //versi3
         if (request()->ajax()) {
             $data = SuratMasuk::with('jabatan_bidang')
             ->whereIn('status',['diverifikasi-kasubag','diverifikasi-sekdin','selesai','didisposisi'])
